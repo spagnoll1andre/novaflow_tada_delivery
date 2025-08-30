@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Customer Search View -->
+    <record id="view_customer_search" model="ir.ui.view">
+        <field name="name">tada.customer.search</field>
+        <field name="model">tada.customer</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Search Customers">
+                <field name="display_name"/>
+                <field name="fiscal_code"/>
+                <field name="first_name"/>
+                <field name="last_name"/>
+                <field name="email"/>
+                <field name="group"/>
+                <separator/>
+                <filter name="active_associations" string="Has Active Associations" 
+                        domain="[('has_active_associations', '=', True)]"/>
+                <filter name="prosumers" string="Prosumers" 
+                        domain="[('user_type', '=', 'PROSUMER')]"/>
+                <filter name="consumers" string="Consumers" 
+                        domain="[('user_type', '=', 'CONSUMER')]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_user_type" string="User Type" 
+                            context="{'group_by': 'user_type'}"/>
+                    <filter name="group_by_group" string="Group" 
+                            context="{'group_by': 'group'}"/>
+                    <filter name="group_by_company" string="Company" 
+                            context="{'group_by': 'company_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Device Search View -->
+    <record id="view_device_search" model="ir.ui.view">
+        <field name="name">tada.device.search</field>
+        <field name="model">tada.device</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Search Devices">
+                <field name="device_id"/>
+                <field name="type_name"/>
+                <field name="group"/>
+                <field name="mac"/>
+                <separator/>
+                <filter name="active_devices" string="Active" 
+                        domain="[('active', '=', True)]"/>
+                <filter name="online_devices" string="Online" 
+                        domain="[('status', 'in', ['online', 'online_weak_wifi', 'online_weak_meter_signal'])]"/>
+                <filter name="offline_devices" string="Offline" 
+                        domain="[('status', 'like', 'offline')]"/>
+                <filter name="has_consumption" string="Has Consumption" 
+                        domain="[('has_consumption', '=', True)]"/>
+                <filter name="has_production" string="Has Production" 
+                        domain="[('has_production', '=', True)]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_status" string="Status" 
+                            context="{'group_by': 'status'}"/>
+                    <filter name="group_by_type" string="Type" 
+                            context="{'group_by': 'type_name'}"/>
+                    <filter name="group_by_group" string="Group" 
+                            context="{'group_by': 'group'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Admissibility Request Search View -->
+    <record id="view_admissibility_request_search" model="ir.ui.view">
+        <field name="name">tada.admissibility.request.search</field>
+        <field name="model">tada.admissibility.request</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Search Admissibility Requests">
+                <field name="request_id"/>
+                <field name="pod"/>
+                <field name="fiscal_code"/>
+                <field name="group"/>
+                <separator/>
+                <filter name="pending" string="Pending" 
+                        domain="[('status', '=', 'PENDING')]"/>
+                <filter name="admissible" string="Admissible" 
+                        domain="[('status', '=', 'ADMISSIBLE')]"/>
+                <filter name="not_admissible" string="Not Admissible" 
+                        domain="[('status', '=', 'NOT_ADMISSIBLE')]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_status" string="Status" 
+                            context="{'group_by': 'status'}"/>
+                    <filter name="group_by_group" string="Group" 
+                            context="{'group_by': 'group'}"/>
+                    <filter name="group_by_date" string="Creation Date" 
+                            context="{'group_by': 'created_at'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Association Request Search View -->
+    <record id="view_association_request_search" model="ir.ui.view">
+        <field name="name">tada.association.request.search</field>
+        <field name="model">tada.association.request</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Search Association Requests">
+                <field name="request_id"/>
+                <field name="pod"/>
+                <field name="serial"/>
+                <field name="fiscal_code"/>
+                <field name="first_name"/>
+                <field name="last_name"/>
+                <field name="group"/>
+                <separator/>
+                <filter name="pending" string="Pending" 
+                        domain="[('status', '=', 'PENDING')]"/>
+                <filter name="associated" string="Associated" 
+                        domain="[('status', '=', 'ASSOCIATED')]"/>
+                <filter name="taken_in_charge" string="Taken in Charge" 
+                        domain="[('status', '=', 'TAKEN_IN_CHARGE')]"/>
+                <filter name="contract_signed" string="Contract Signed" 
+                        domain="[('contract_signed', '=', True)]"/>
+                <filter name="prosumers" string="Prosumers" 
+                        domain="[('user_type', '=', 'PROSUMER')]"/>
+                <filter name="consumers" string="Consumers" 
+                        domain="[('user_type', '=', 'CONSUMER')]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_status" string="Status" 
+                            context="{'group_by': 'status'}"/>
+                    <filter name="group_by_user_type" string="User Type" 
+                            context="{'group_by': 'user_type'}"/>
+                    <filter name="group_by_pod_m_type" string="POD M Type" 
+                            context="{'group_by': 'pod_m_type'}"/>
+                    <filter name="group_by_group" string="Group" 
+                            context="{'group_by': 'group'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Disassociation Request Search View -->
+    <record id="view_disassociation_request_search" model="ir.ui.view">
+        <field name="name">tada.disassociation.request.search</field>
+        <field name="model">tada.disassociation.request</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Search Disassociation Requests">
+                <field name="request_id"/>
+                <field name="pod"/>
+                <field name="serial"/>
+                <field name="fiscal_code"/>
+                <field name="first_name"/>
+                <field name="last_name"/>
+                <field name="group"/>
+                <separator/>
+                <filter name="pending" string="Pending" 
+                        domain="[('status', '=', 'PENDING')]"/>
+                <filter name="disassociated" string="Disassociated" 
+                        domain="[('status', '=', 'DISASSOCIATED')]"/>
+                <filter name="contract_signed" string="Contract Signed" 
+                        domain="[('contract_signed', '=', True)]"/>
+                <filter name="prosumers" string="Prosumers" 
+                        domain="[('user_type', '=', 'PROSUMER')]"/>
+                <filter name="consumers" string="Consumers" 
+                        domain="[('user_type', '=', 'CONSUMER')]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_status" string="Status" 
+                            context="{'group_by': 'status'}"/>
+                    <filter name="group_by_user_type" string="User Type" 
+                            context="{'group_by': 'user_type'}"/>
+                    <filter name="group_by_pod_m_type" string="POD M Type" 
+                            context="{'group_by': 'pod_m_type'}"/>
+                    <filter name="group_by_group" string="Group" 
+                            context="{'group_by': 'group'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

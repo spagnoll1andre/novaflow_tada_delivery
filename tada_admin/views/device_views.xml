@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Device List View -->
+    <record id="view_device_list" model="ir.ui.view">
+        <field name="name">tada.device.list</field>
+        <field name="model">tada.device</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list string="TADA ERP Devices">
+                <header>
+                    <button name="sync_from_api" type="object" string="Sync Data from API" 
+                            class="btn-primary" icon="fa-refresh"
+                            help="Sync all devices from TADA API"
+                            display="always"
+                    />
+                </header>
+                <field name="device_id"/>
+                <field name="type_name"/>
+                <field name="status"/>
+                <field name="group"/>
+                <field name="has_consumption"/>
+                <field name="has_production"/>
+                <field name="active"/>
+                <field name="last_sync"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Device Form View -->
+    <record id="view_device_form" model="ir.ui.view">
+        <field name="name">tada.device.form</field>
+        <field name="model">tada.device</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="TADA ERP Device">
+                <header>
+                    <button name="action_refresh_from_api" type="object" string="Refresh from API" class="btn-primary"/>
+                    <button name="action_view_associated_requests" type="object" string="View Requests"/>
+                    <field name="status" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="device_id"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group name="identification" string="Device Identification">
+                            <field name="device_id" required="1"/>
+                            <field name="type_name"/>
+                            <field name="group"/>
+                            <field name="active"/>
+                        </group>
+                        <group name="versions" string="Versions">
+                            <field name="hw_version"/>
+                            <field name="sw_version"/>
+                            <field name="fw_version"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group name="network" string="Network">
+                            <field name="mac"/>
+                            <field name="login_key"/>
+                        </group>
+                        <group name="security" string="Security">
+                            <field name="k1"/>
+                            <field name="k2"/>
+                            <field name="system_title"/>
+                        </group>
+                    </group>
+                    <group name="meters" string="Meter Connections">
+                        <group name="consumption" string="Consumption">
+                            <field name="m1"/>
+                            <field name="has_consumption" readonly="1"/>
+                        </group>
+                        <group name="production" string="Production">
+                            <field name="m2"/>
+                            <field name="m2_2"/>
+                            <field name="m2_3"/>
+                            <field name="m2_4"/>
+                            <field name="has_production" readonly="1"/>
+                        </group>
+                    </group>
+                    <group name="timestamps" string="Timestamps">
+                        <field name="last_sync" readonly="1"/>
+                        <field name="created_at" readonly="1"/>
+                        <field name="updated_at" readonly="1"/>
+                        <field name="company_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Device Action -->
+    <record id="action_device" model="ir.actions.act_window">
+        <field name="name">Devices</field>
+        <field name="res_model">tada.device</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_device_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No devices found. Sync from TADA API to import devices.
+            </p>
+        </field>
+    </record>
+</odoo>

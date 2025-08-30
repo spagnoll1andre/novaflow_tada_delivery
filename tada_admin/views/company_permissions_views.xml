@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Company Permissions List View -->
+        <record id="view_company_permissions_list" model="ir.ui.view">
+            <field name="name">tada_admin.company.permissions.list</field>
+            <field name="model">tada_admin.company.permissions</field>
+            <field name="type">list</field>
+            <field name="arch" type="xml">
+                <list string="Company Permissions">
+                    <field name="company_id"/>
+                    <field name="is_partner_energia" widget="boolean_toggle"/>
+                    <field name="has_configurazione_ammissibilita" widget="boolean_toggle"/>
+                    <field name="has_configurazione_associazione" widget="boolean_toggle"/>
+                    <field name="has_magazzino" widget="boolean_toggle"/>
+                    <field name="has_spedizione" widget="boolean_toggle"/>
+                    <field name="has_monitoraggio" widget="boolean_toggle"/>
+                    <field name="last_modified"/>
+                    <field name="modified_by"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Company Permissions Form View -->
+        <record id="view_company_permissions_form" model="ir.ui.view">
+            <field name="name">tada_admin.company.permissions.form</field>
+            <field name="model">tada_admin.company.permissions</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Company Permissions">
+                    <sheet>
+                        <group>
+                            <group name="company_info">
+                                <field name="company_id" options="{'no_create': True}"/>
+                            </group>
+                        </group>
+                        
+                        <notebook>
+                            <page string="Permissions" name="permissions">
+                                <group>
+                                    <group name="feature_permissions" string="Feature Permissions">
+                                        <field name="is_partner_energia" widget="boolean_toggle"/>
+                                        <field name="has_configurazione_ammissibilita" widget="boolean_toggle"/>
+                                        <field name="has_configurazione_associazione" widget="boolean_toggle"/>
+                                        <field name="has_magazzino" widget="boolean_toggle"/>
+                                        <field name="has_spedizione" widget="boolean_toggle"/>
+                                        <field name="has_monitoraggio" widget="boolean_toggle"/>
+                                    </group>
+                                </group>
+                            </page>
+                            
+                            <page string="Audit Information" name="audit">
+                                <group>
+                                    <group name="audit_fields" string="Audit Trail">
+                                        <field name="created_date" readonly="1"/>
+                                        <field name="last_modified" readonly="1"/>
+                                        <field name="modified_by" readonly="1"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Company Permissions Search View -->
+        <record id="view_company_permissions_search" model="ir.ui.view">
+            <field name="name">tada_admin.company.permissions.search</field>
+            <field name="model">tada_admin.company.permissions</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Company Permissions">
+                    <field name="company_id"/>
+                    <field name="modified_by"/>
+                    
+                    <filter string="Has Partner Energia" name="is_partner_energia" 
+                            domain="[('is_partner_energia', '=', True)]"/>
+                    <filter string="Has Configurazione Ammissibilità" name="has_configurazione_ammissibilita" 
+                            domain="[('has_configurazione_ammissibilita', '=', True)]"/>
+                    <filter string="Has Configurazione Associazione" name="has_configurazione_associazione" 
+                            domain="[('has_configurazione_associazione', '=', True)]"/>
+                    <filter string="Has Magazzino" name="has_magazzino" 
+                            domain="[('has_magazzino', '=', True)]"/>
+                    <filter string="Has Spedizione" name="has_spedizione" 
+                            domain="[('has_spedizione', '=', True)]"/>
+                    <filter string="Has Monitoraggio" name="has_monitoraggio" 
+                            domain="[('has_monitoraggio', '=', True)]"/>
+                    
+                    <separator/>
+                    <filter string="Recently Modified" name="recent" 
+                            domain="[('last_modified', '>=', (context_today() - datetime.timedelta(days=7)).strftime('%Y-%m-%d'))]"/>
+                    
+                    <group expand="0" string="Group By">
+                        <filter string="Company" name="group_company" context="{'group_by': 'company_id'}"/>
+                        <filter string="Modified By" name="group_modified_by" context="{'group_by': 'modified_by'}"/>
+                        <filter string="Last Modified" name="group_last_modified" context="{'group_by': 'last_modified:month'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Company Permissions Action -->
+        <record id="action_company_permissions" model="ir.actions.act_window">
+            <field name="name">Company Permissions</field>
+            <field name="res_model">tada_admin.company.permissions</field>
+            <field name="view_mode">list,form</field>
+            <field name="view_id" ref="view_company_permissions_list"/>
+            <field name="search_view_id" ref="view_company_permissions_search"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create company permissions
+                </p>
+                <p>
+                    Define which features each company can access in the TADA system.
+                    You can control access to monitoring, reporting, analytics, and advanced configuration features.
+                </p>
+            </field>
+        </record>
+
+        <!-- Menu Item -->
+        <menuitem id="menu_company_permissions"
+                  name="Company Permissions"
+                  parent="menu_tada_admin_configuration"
+                  action="action_company_permissions"
+                  sequence="10"/>
+    </data>
+</odoo>

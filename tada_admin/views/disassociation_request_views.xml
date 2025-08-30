@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Disassociation Request List View -->
+    <record id="view_disassociation_request_list" model="ir.ui.view">
+        <field name="name">tada.disassociation.request.list</field>
+        <field name="model">tada.disassociation.request</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list string="Disassociation Requests">
+                <header>
+                    <button name="sync_from_api" type="object" string="Sync Data from API" 
+                            class="btn-primary" icon="fa-refresh"
+                            help="Sync all disassociation requests from TADA API"
+                            display="always"
+                    />
+                </header>
+                <field name="request_id"/>
+                <field name="display_name"/>
+                <field name="pod"/>
+                <field name="serial"/>
+                <field name="pod_m_type"/>
+                <field name="user_type"/>
+                <field name="status"/>
+                <field name="contract_signed"/>
+                <field name="customer_id"/>
+                <field name="created_at"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Disassociation Request Form View -->
+    <record id="view_disassociation_request_form" model="ir.ui.view">
+        <field name="name">tada.disassociation.request.form</field>
+        <field name="model">tada.disassociation.request</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Disassociation Request">
+                <header>
+                    <button name="create_api_request" type="object" string="Create via API" 
+                            class="btn-primary" invisible="request_id != False"/>
+                    <button name="action_refresh_from_api" type="object" string="Refresh from API" 
+                            invisible="request_id == False"/>
+                    <button name="action_view_original_association" type="object" string="View Original Association"/>
+                    <field name="status" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="display_name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group name="request_info" string="Request Information">
+                            <field name="request_id" readonly="1"/>
+                            <field name="pod" required="1"/>
+                            <field name="serial" required="1"/>
+                            <field name="pod_m_type" required="1"/>
+                            <field name="user_type" required="1"/>
+                            <field name="request_type"/>
+                            <field name="group"/>
+                        </group>
+                        <group name="contract_info" string="Contract">
+                            <field name="contract_signed"/>
+                            <field name="product"/>
+                        </group>
+                    </group>
+                    <group name="customer_info" string="Customer Information">
+                        <group name="personal" string="Personal Data">
+                            <field name="fiscal_code" required="1"/>
+                            <field name="first_name"/>
+                            <field name="last_name"/>
+                            <field name="email"/>
+                        </group>
+                        <group name="relation" string="Customer Relation">
+                            <field name="customer_id"/>
+                        </group>
+                    </group>
+                    <group name="timestamps" string="Timestamps">
+                        <field name="created_at" readonly="1"/>
+                        <field name="updated_at" readonly="1"/>
+                        <field name="company_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Disassociation Request Action -->
+    <record id="action_disassociation_request" model="ir.actions.act_window">
+        <field name="name">Disassociation Requests</field>
+        <field name="res_model">tada.disassociation.request</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_disassociation_request_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first disassociation request!
+            </p>
+        </field>
+    </record>
+</odoo>

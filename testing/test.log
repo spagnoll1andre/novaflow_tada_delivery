@@ -1,0 +1,9 @@
+=== ODOO MODULE TEST LOG (Complete) ===
+Exit code: 0
+Module path: /Users/davc-agilelab/Documents/NovaFlow/TaDa/Chain2Gate/tada_admin
+
+=== STDOUT ===
+
+
+=== STDERR ===
+Warn: Can't find .pfb for face 'Courier'

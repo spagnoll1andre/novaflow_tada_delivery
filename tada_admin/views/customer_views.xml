@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Customer List View -->
+    <record id="view_customer_list" model="ir.ui.view">
+        <field name="name">tada.customer.list</field>
+        <field name="model">tada.customer</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list string="TADA ERP Customers">
+                <header>
+                    <button name="sync_customer_from_api" type="object" string="Sync from Local Data"
+                            class="btn-primary" icon="fa-refresh"
+                            help="Sync all customers from local request data (fast)"
+                            display="always"
+                    />
+                </header>
+                <field name="display_name"/>
+                <field name="fiscal_code"/>
+                <field name="user_type"/>
+                <field name="group"/>
+                <field name="device_count"/>
+                <field name="has_active_associations"/>
+                <field name="latest_request_date"/>
+                <field name="created_at"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Customer Form View -->
+    <record id="view_customer_form" model="ir.ui.view">
+        <field name="name">tada.customer.form</field>
+        <field name="model">tada.customer</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="TADA ERP Customer">
+                <header>
+                    <button name="action_refresh_from_api" type="object" string="Refresh from API" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="display_name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group name="personal_info" string="Personal Information">
+                            <field name="fiscal_code" required="1"/>
+                            <field name="first_name"/>
+                            <field name="last_name"/>
+                            <field name="email"/>
+                            <field name="phone"/>
+                        </group>
+                        <group name="classification" string="Classification">
+                            <field name="user_type"/>
+                            <field name="group"/>
+                            <field name="company_id"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group name="status" string="Status">
+                            <field name="has_active_associations"/>
+                            <field name="latest_request_date"/>
+                        </group>
+                        <group name="counts" string="Statistics">
+                            <field name="device_count"/>
+                            <field name="admissibility_count"/>
+                            <field name="association_count"/>
+                            <field name="disassociation_count"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Devices" name="devices">
+                            <field name="device_ids">
+                                <list>
+                                    <field name="device_id"/>
+                                    <field name="status"/>
+                                    <field name="has_consumption"/>
+                                    <field name="has_production"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Admissibility Requests" name="admissibility">
+                            <field name="admissibility_request_ids">
+                                <list>
+                                    <field name="request_id"/>
+                                    <field name="pod"/>
+                                    <field name="status"/>
+                                    <field name="created_at"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Association Requests" name="associations">
+                            <field name="association_request_ids">
+                                <list>
+                                    <field name="request_id"/>
+                                    <field name="pod"/>
+                                    <field name="serial"/>
+                                    <field name="status"/>
+                                    <field name="created_at"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Disassociation Requests" name="disassociations">
+                            <field name="disassociation_request_ids">
+                                <list>
+                                    <field name="request_id"/>
+                                    <field name="pod"/>
+                                    <field name="serial"/>
+                                    <field name="status"/>
+                                    <field name="created_at"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                    <group name="timestamps" string="Timestamps">
+                        <field name="created_at" readonly="1"/>
+                        <field name="updated_at" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Customer Action -->
+    <record id="action_customer" model="ir.actions.act_window">
+        <field name="name">Customers</field>
+        <field name="res_model">tada.customer</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_customer_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first TADA ERP customer!
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- TADA Configuration Wizard Form View -->
+    <record id="view_tada_config_wizard_form" model="ir.ui.view">
+        <field name="name">tada.config.wizard.form</field>
+        <field name="model">tada.config.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="TADA ERP Configuration">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>TADA ERP Configuration</h1>
+                        <p>Configure your TADA ERP integration settings</p>
+                    </div>
+                    
+                    <group name="config_group" invisible="state != 'config'">
+                        <group name="api_config" string="API Configuration">
+                            <field name="api_key" password="True" required="1"/>
+                            <field name="base_url" required="1"/>
+                        </group>
+                    </group>
+                    
+                    <group name="test_group" invisible="state not in ['test', 'complete']">
+                        <group name="test_results" string="Connection Test Results">
+                            <field name="connection_status" nolabel="1" readonly="1"/>
+                        </group>
+                    </group>
+                    
+                    <!-- Hidden fields required for view logic -->
+                    <group invisible="1">
+                        <field name="state"/>
+                    </group>
+                </sheet>
+                
+                <footer>
+                    <button name="test_connection" type="object" string="Test Connection" 
+                            class="btn-primary" invisible="state != 'config'"/>
+                    <button name="save_configuration" type="object" string="Save Configuration" 
+                            class="btn-primary" invisible="state != 'test'"/>
+                    <button name="open_tada_menu" type="object" string="Open TADA ERP" 
+                            class="btn-primary" invisible="state != 'complete'"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- TADA Configuration Wizard Action -->
+    <record id="action_tada_config_wizard" model="ir.actions.act_window">
+        <field name="name">TADA ERP Configuration</field>
+        <field name="res_model">tada.config.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Configure your TADA ERP integration settings
+            </p>
+        </field>
+    </record>
+
+    <!-- TADA Settings Form View -->
+    <record id="view_tada_settings_form" model="ir.ui.view">
+        <field name="name">tada.settings.form</field>
+        <field name="model">tada.settings</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="TADA ERP Settings" class="oe_form_configuration">
+                <header>
+                    <button name="open_config_wizard" type="object" string="Configuration Wizard" 
+                            class="btn-primary"/>
+                    <button name="test_connection" type="object" string="Test Connection" 
+                            class="btn-secondary"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>TADA ERP Settings</h1>
+                    </div>
+                    
+                    <group name="tada_config" string="TADA ERP Configuration">
+                        <field name="tada_active"/>
+                        <field name="tada_api_key" password="True" 
+                               invisible="not tada_active"/>
+                        <field name="tada_base_url" 
+                               invisible="not tada_active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- TADA Settings Action -->
+    <record id="action_tada_settings" model="ir.actions.act_window">
+        <field name="name">TADA ERP Settings</field>
+        <field name="res_model">tada.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+    </record>
+</odoo>

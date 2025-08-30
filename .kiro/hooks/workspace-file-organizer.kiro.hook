@@ -1,0 +1,21 @@
+{
+  "enabled": true,
+  "name": "Workspace File Organizer",
+  "description": "Automatically organizes workspace files by moving production-ready files to the 'export' folder and development/test files to the 'tmp' folder when file changes are detected",
+  "version": "1",
+  "when": {
+    "type": "userTriggered",
+    "patterns": [
+      "*.py",
+      "*.md",
+      "*.txt",
+      "*.json",
+      "*.yml",
+      "*.yaml"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Organize the workspace files by moving production-ready files to the 'export' folder and development/test files to the 'tmp' folder. Follow these rules:\n\n**Export folder (production-ready files):**\n- chain2gate_sdk.py (main SDK)\n- chain2gate_encrypted_sdk.py (encrypted version)\n- hierarchical_encryption.py (encryption utilities)\n- Any final documentation files\n- Any configuration files needed for production\n\n**Tmp folder (development/test files):**\n- Test files (*_test.py, test_*.py)\n- Development guides and documentation\n- Temporary files\n- Cache files (__pycache__)\n- Any experimental or work-in-progress files\n\n**Keep in root:**\n- .kiro/ directory\n- .DS_Store (system files)\n- README files\n- License files\n- Setup/configuration files (setup.py, requirements.txt, etc.)\n\nMove files appropriately and provide a summary of what was organized."
+  }
+}

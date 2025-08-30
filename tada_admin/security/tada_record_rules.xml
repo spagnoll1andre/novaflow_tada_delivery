@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Multi-company record rules for TADA ERP models -->
+        
+        <!-- Customer record rules -->
+        <record id="tada_customer_company_rule" model="ir.rule">
+            <field name="name">TADA Customer: multi-company</field>
+            <field name="model_id" ref="model_tada_customer"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="global" eval="True"/>
+        </record>
+
+        <!-- Device record rules -->
+        <record id="tada_device_company_rule" model="ir.rule">
+            <field name="name">TADA Device: multi-company</field>
+            <field name="model_id" ref="model_tada_device"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="global" eval="True"/>
+        </record>
+
+        <!-- Admissibility Request record rules -->
+        <record id="tada_admissibility_request_company_rule" model="ir.rule">
+            <field name="name">TADA Admissibility Request: multi-company</field>
+            <field name="model_id" ref="model_tada_admissibility_request"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="global" eval="True"/>
+        </record>
+
+        <!-- Association Request record rules -->
+        <record id="tada_association_request_company_rule" model="ir.rule">
+            <field name="name">TADA Association Request: multi-company</field>
+            <field name="model_id" ref="model_tada_association_request"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="global" eval="True"/>
+        </record>
+
+        <!-- Disassociation Request record rules -->
+        <record id="tada_disassociation_request_company_rule" model="ir.rule">
+            <field name="name">TADA Disassociation Request: multi-company</field>
+            <field name="model_id" ref="model_tada_disassociation_request"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="global" eval="True"/>
+        </record>
+
+        <!-- Configuration wizard access rules (admin only) -->
+        <record id="tada_config_wizard_admin_rule" model="ir.rule">
+            <field name="name">TADA Config Wizard: admin only</field>
+            <field name="model_id" ref="model_tada_config_wizard"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_tada_admin_admin'))]"/>
+        </record>
+
+        <!-- Settings access rules (admin only) -->
+        <record id="tada_settings_admin_rule" model="ir.rule">
+            <field name="name">TADA Settings: admin only</field>
+            <field name="model_id" ref="model_tada_settings"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_tada_admin_admin'))]"/>
+        </record>
+
+        <!-- POD Authorization record rules -->
+        <record id="tada_pod_authorization_company_rule" model="ir.rule">
+            <field name="name">TADA POD Authorization: multi-company</field>
+            <field name="model_id" ref="model_tada_admin_pod_authorization"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="global" eval="True"/>
+        </record>
+
+        <!-- Company Permissions record rules -->
+        <record id="tada_company_permissions_company_rule" model="ir.rule">
+            <field name="name">TADA Company Permissions: multi-company</field>
+            <field name="model_id" ref="model_tada_admin_company_permissions"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="global" eval="True"/>
+        </record>
+
+        <!-- POD Summary record rules -->
+        <record id="tada_pod_summary_company_rule" model="ir.rule">
+            <field name="name">TADA POD Summary: multi-company</field>
+            <field name="model_id" ref="model_tada_admin_pod_summary"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="global" eval="True"/>
+        </record>
+    </data>
+</odoo>

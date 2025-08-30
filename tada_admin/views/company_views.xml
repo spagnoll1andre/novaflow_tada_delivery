@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Company Form View Extension for TADA ERP Configuration -->
+    <record id="view_company_form_tada_erp" model="ir.ui.view">
+        <field name="name">res.company.form.tada.erp</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="TADA ERP" name="tada_erp_config">
+                    <group name="tada_erp_main" string="TADA ERP Integration">
+                        <field name="tada_active"/>
+                        <field name="tada_api_key" password="True" 
+                               invisible="not tada_active"/>
+                        <field name="tada_base_url" 
+                               invisible="not tada_active"/>
+                    </group>
+                    
+                    <group name="tada_erp_actions" string="Configuration Actions" 
+                           invisible="not tada_active">
+                        <div class="o_row">
+                            <button name="action_open_tada_config_wizard" 
+                                    type="object" 
+                                    string="Configuration Wizard" 
+                                    class="btn-primary"
+                                    help="Open the TADA ERP configuration wizard"/>
+                            <button name="action_test_tada_connection" 
+                                    type="object" 
+                                    string="Test Connection" 
+                                    class="btn-secondary"
+                                    help="Test the TADA ERP API connection"/>
+                            <button name="action_open_tada_menu" 
+                                    type="object" 
+                                    string="Open TADA ERP" 
+                                    class="btn-info"
+                                    help="Open the TADA ERP main interface"/>
+                        </div>
+                    </group>
+                    
+                    <group name="tada_erp_status" string="Status Information" 
+                           invisible="not tada_active">
+                        <field name="tada_connection_status" readonly="1"/>
+                        <field name="tada_status_message" readonly="1" nolabel="1"/>
+                        <field name="tada_last_sync" readonly="1"/>
+                        
+                        <div class="alert alert-info" role="alert">
+                            <strong>Configuration Status:</strong><br/>
+                            <span invisible="not tada_api_key">✅ API Key configured</span>
+                            <span invisible="tada_api_key">❌ API Key not configured</span>
+                            <br/>
+                            <span invisible="not tada_base_url">✅ Base URL configured</span>
+                            <span invisible="tada_base_url">❌ Base URL not configured</span>
+                            <br/>
+                            <span invisible="tada_connection_status != 'connected'">✅ Connection verified</span>
+                            <span invisible="tada_connection_status == 'connected'">⚠️ Connection not verified</span>
+                        </div>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Company Action for TADA ERP Settings -->
+    <record id="action_company_tada_settings" model="ir.actions.act_window">
+        <field name="name">Company TADA ERP Settings</field>
+        <field name="res_model">res.company</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_company_form_tada_erp"/>
+        <field name="target">current</field>
+    </record>
+</odoo>

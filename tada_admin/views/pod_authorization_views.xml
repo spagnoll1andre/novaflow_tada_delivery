@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- POD Authorization List View -->
+    <record id="view_pod_authorization_list" model="ir.ui.view">
+        <field name="name">tada_admin.pod.authorization.list</field>
+        <field name="model">tada_admin.pod.authorization</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list string="POD Authorizations" decoration-muted="not is_active">
+                <field name="company_id"/>
+                <field name="pod_code"/>
+                <field name="pod_name"/>
+                <field name="is_active"/>
+                <field name="chain2gate_id"/>
+                <field name="last_sync"/>
+                <field name="created_date"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- POD Authorization Form View -->
+    <record id="view_pod_authorization_form" model="ir.ui.view">
+        <field name="name">tada_admin.pod.authorization.form</field>
+        <field name="model">tada_admin.pod.authorization</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="POD Authorization">
+                <header>
+                    <button name="activate_pod" string="Activate" type="object" 
+                            invisible="is_active"
+                            class="btn-primary"/>
+                    <button name="deactivate_pod" string="Deactivate" type="object" 
+                            invisible="not is_active"
+                            class="btn-secondary"/>
+                    <button name="sync_with_chain2gate" string="Sync with Chain2Gate" type="object"
+                            class="btn-secondary"/>
+                    <field name="is_active" widget="boolean_button" 
+                           options="{'terminology': {'string_true': 'Active', 'string_false': 'Inactive'}}"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group name="main_info" string="Main Information">
+                            <field name="company_id" required="1"/>
+                            <field name="pod_code" required="1"/>
+                            <field name="pod_name"/>
+                        </group>
+                        <group name="chain2gate_info" string="Chain2Gate Integration">
+                            <field name="chain2gate_id"/>
+                            <field name="last_sync" readonly="1"/>
+                        </group>
+                    </group>
+                    <group name="audit_info" string="Audit Information">
+                        <group>
+                            <field name="created_date" readonly="1"/>
+                            <field name="last_modified" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="modified_by" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- POD Authorization Search View -->
+    <record id="view_pod_authorization_search" model="ir.ui.view">
+        <field name="name">tada_admin.pod.authorization.search</field>
+        <field name="model">tada_admin.pod.authorization</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Search POD Authorizations">
+                <field name="company_id"/>
+                <field name="pod_code"/>
+                <field name="pod_name"/>
+                <field name="chain2gate_id"/>
+                <separator/>
+                <filter name="active" string="Active" domain="[('is_active', '=', True)]"/>
+                <filter name="inactive" string="Inactive" domain="[('is_active', '=', False)]"/>
+                <separator/>
+                <filter name="synced" string="Synced with Chain2Gate" domain="[('last_sync', '!=', False)]"/>
+                <filter name="not_synced" string="Not Synced" domain="[('last_sync', '=', False)]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_company" string="Company" context="{'group_by': 'company_id'}"/>
+                    <filter name="group_by_active" string="Status" context="{'group_by': 'is_active'}"/>
+                    <filter name="group_by_sync_status" string="Sync Status" context="{'group_by': 'last_sync'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- POD Authorization Action -->
+    <record id="action_pod_authorization" model="ir.actions.act_window">
+        <field name="name">POD Authorizations</field>
+        <field name="res_model">tada_admin.pod.authorization</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_active': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first POD Authorization!
+            </p>
+            <p>
+                POD Authorizations define which companies can access specific POD codes.
+                This ensures proper data separation and security in multi-company environments.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_pod_authorization"
+              name="POD Authorizations"
+              parent="menu_tada_admin_configuration"
+              action="action_pod_authorization"
+              sequence="20"/>
+
+</odoo>

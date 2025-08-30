@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Admissibility Request List View -->
+    <record id="view_admissibility_request_list" model="ir.ui.view">
+        <field name="name">tada.admissibility.request.list</field>
+        <field name="model">tada.admissibility.request</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list string="Admissibility Requests">
+                <header>
+                    <button name="sync_from_api" type="object" string="Sync Data from API" 
+                            class="btn-primary" icon="fa-refresh"
+                            help="Sync all admissibility requests from TADA API"
+                            display="always"
+                    />
+                </header>
+                <field name="request_id"/>
+                <field name="pod"/>
+                <field name="fiscal_code"/>
+                <field name="status"/>
+                <field name="group"/>
+                <field name="customer_id"/>
+                <field name="created_at"/>
+                <field name="closed_at"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Admissibility Request Form View -->
+    <record id="view_admissibility_request_form" model="ir.ui.view">
+        <field name="name">tada.admissibility.request.form</field>
+        <field name="model">tada.admissibility.request</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Admissibility Request">
+                <header>
+                    <button name="create_api_request" type="object" string="Create via API" 
+                            class="btn-primary" invisible="request_id != False"/>
+                    <button name="action_refresh_from_api" type="object" string="Refresh from API" 
+                            invisible="request_id == False"/>
+                    <button name="sync_from_api" type="object" string="Sync All from API" 
+                            class="btn-secondary" icon="fa-refresh"
+                            help="Sync all admissibility requests from TADA API"/>
+                    <field name="status" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="pod"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group name="request_info" string="Request Information">
+                            <field name="request_id" readonly="1"/>
+                            <field name="pod" required="1"/>
+                            <field name="fiscal_code" required="1"/>
+                            <field name="group"/>
+                        </group>
+                        <group name="customer_info" string="Customer">
+                            <field name="customer_id"/>
+                        </group>
+                    </group>
+                    <group name="message" string="Message">
+                        <field name="message" nolabel="1"/>
+                    </group>
+                    <group name="timestamps" string="Timestamps">
+                        <field name="created_at" readonly="1"/>
+                        <field name="updated_at" readonly="1"/>
+                        <field name="closed_at" readonly="1"/>
+                        <field name="company_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Admissibility Request Action -->
+    <record id="action_admissibility_request" model="ir.actions.act_window">
+        <field name="name">Admissibility Requests</field>
+        <field name="res_model">tada.admissibility.request</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_admissibility_request_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first admissibility request!
+            </p>
+        </field>
+    </record>
+</odoo>
