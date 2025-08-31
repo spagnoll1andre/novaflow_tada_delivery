@@ -1,0 +1,121 @@
+=== TADA B2B2C MODULE TEST LOG ===
+Exit code: 0
+Module path: C:\Users\Andrea\PycharmProjects\novaflow_tada_delivery\novaflow_tada-feature-tada-admin\tada_admin
+
+=== STDOUT ===
+
+
+=== STDERR ===
+2025-08-31 00:11:16,680 1 INFO ? odoo: Odoo version 18.0-20250819 
+2025-08-31 00:11:16,680 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-08-31 00:11:16,680 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-08-31 00:11:16,681 1 INFO ? odoo: database: odoo@172.17.0.2:5432 
+Warn: Can't find .pfb for face 'Courier'
+2025-08-31 00:11:16,854 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-08-31 00:11:16,862 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-08-31 00:11:17,030 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 9bc846688140:8069 
+2025-08-31 00:11:17,051 1 INFO test_module odoo.tests.common: Importing test framework 
+2025-08-31 00:11:17,072 1 INFO test_module odoo.modules.loading: loading 1 modules... 
+2025-08-31 00:11:17,077 1 INFO test_module odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2025-08-31 00:11:17,094 1 INFO test_module odoo.modules.loading: updating modules list 
+2025-08-31 00:11:17,095 1 INFO test_module odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2025-08-31 00:11:17,989 1 INFO test_module odoo.modules.loading: loading 13 modules... 
+2025-08-31 00:11:18,159 1 INFO test_module odoo.modules.loading: Loading module tada_admin (11/13) 
+2025-08-31 00:11:18,412 1 INFO test_module odoo.addons.tada_admin: TADA Admin Odoo Integration Module v1.0.0 loaded 
+2025-08-31 00:11:18,431 1 INFO test_module odoo.modules.registry: module tada_admin: creating or updating database tables 
+2025-08-31 00:11:18,587 1 INFO test_module odoo.modules.loading: loading tada_admin/security/tada_security_groups.xml 
+2025-08-31 00:11:18,669 1 INFO test_module odoo.modules.loading: loading tada_admin/security/tada_record_rules.xml 
+2025-08-31 00:11:18,702 1 INFO test_module odoo.modules.loading: loading tada_admin/security/ir.model.access.csv 
+2025-08-31 00:11:18,741 1 INFO test_module odoo.modules.loading: loading tada_admin/views/search_views.xml 
+2025-08-31 00:11:18,778 1 INFO test_module odoo.modules.loading: loading tada_admin/views/customer_views.xml 
+2025-08-31 00:11:18,795 1 INFO test_module odoo.modules.loading: loading tada_admin/views/device_views.xml 
+2025-08-31 00:11:18,810 1 INFO test_module odoo.modules.loading: loading tada_admin/views/admissibility_request_views.xml 
+2025-08-31 00:11:18,824 1 INFO test_module odoo.modules.loading: loading tada_admin/views/association_request_views.xml 
+2025-08-31 00:11:18,837 1 INFO test_module odoo.modules.loading: loading tada_admin/views/disassociation_request_views.xml 
+2025-08-31 00:11:18,850 1 INFO test_module odoo.modules.loading: loading tada_admin/views/wizard_views.xml 
+2025-08-31 00:11:18,868 1 INFO test_module odoo.modules.loading: loading tada_admin/views/company_views.xml 
+2025-08-31 00:11:18,880 1 INFO test_module odoo.modules.loading: loading tada_admin/views/menu_views.xml 
+2025-08-31 00:11:18,903 1 INFO test_module odoo.modules.loading: loading tada_admin/views/company_permissions_views.xml 
+2025-08-31 00:11:18,923 1 INFO test_module odoo.modules.loading: loading tada_admin/views/pod_authorization_views.xml 
+2025-08-31 00:11:18,942 1 INFO test_module odoo.modules.loading: loading tada_admin/views/pod_summary_views.xml 
+2025-08-31 00:11:19,101 1 INFO test_module odoo.addons.tada_admin.tests.test_authorization_service: Starting TestAuthorizationService.test_check_company_permission_denied ... 
+2025-08-31 00:11:19,187 1 WARNING test_module odoo.addons.tada_admin.services.authorization_service: Authorization denied: Company Test Company (ID: 182) lacks CONFIGURAZIONE_AMMISSIBILITA permission 
+2025-08-31 00:11:19,191 1 INFO test_module odoo.addons.tada_admin.tests.test_authorization_service: Starting TestAuthorizationService.test_check_company_permission_invalid_type ... 
+2025-08-31 00:11:19,270 1 INFO test_module odoo.addons.tada_admin.tests.test_authorization_service: Starting TestAuthorizationService.test_check_company_permission_success ... 
+2025-08-31 00:11:19,342 1 INFO test_module odoo.addons.tada_admin.services.authorization_service: Authorization granted: Company Test Company (ID: 184) has PARTNER_ENERGIA permission 
+2025-08-31 00:11:19,343 1 INFO test_module odoo.addons.tada_admin.services.authorization_service: Authorization granted: Company Test Company (ID: 184) has MONITORAGGIO permission 
+2025-08-31 00:11:19,344 1 INFO test_module odoo.addons.tada_admin.tests.test_authorization_service: Starting TestAuthorizationService.test_get_authorized_pods ... 
+2025-08-31 00:11:19,414 1 INFO test_module odoo.addons.tada_admin.services.authorization_service: Retrieved 2 authorized PODs for company Test Company (ID: 185) 
+2025-08-31 00:11:19,415 1 INFO test_module odoo.addons.tada_admin.tests.test_authorization_service: Starting TestAuthorizationService.test_get_authorized_pods_invalid_company ... 
+2025-08-31 00:11:19,486 1 INFO test_module odoo.addons.tada_admin.tests.test_authorization_service: Starting TestAuthorizationService.test_get_companies_with_permission ... 
+2025-08-31 00:11:19,557 1 INFO test_module odoo.addons.tada_admin.services.authorization_service: Found 1 companies with MONITORAGGIO permission 
+2025-08-31 00:11:19,557 1 INFO test_module odoo.addons.tada_admin.services.authorization_service: Found 0 companies with CONFIGURAZIONE_AMMISSIBILITA permission 
+2025-08-31 00:11:19,558 1 INFO test_module odoo.addons.tada_admin.tests.test_authorization_service: Starting TestAuthorizationService.test_validate_company_and_permission ... 
+2025-08-31 00:11:19,633 1 INFO test_module odoo.addons.tada_admin.services.authorization_service: Authorization granted: Company Test Company (ID: 188) has MONITORAGGIO permission 
+2025-08-31 00:11:19,634 1 INFO test_module odoo.addons.tada_admin.services.authorization_service: Retrieved 2 authorized PODs for company Test Company (ID: 188) 
+2025-08-31 00:11:19,635 1 INFO test_module odoo.addons.tada_admin.services.authorization_service: POD access validated: Company Test Company (ID: 188) authorized for 1 PODs 
+2025-08-31 00:11:19,635 1 INFO test_module odoo.addons.tada_admin.tests.test_authorization_service: Starting TestAuthorizationService.test_validate_pod_access_denied ... 
+2025-08-31 00:11:19,713 1 INFO test_module odoo.addons.tada_admin.services.authorization_service: Retrieved 2 authorized PODs for company Test Company (ID: 189) 
+2025-08-31 00:11:19,713 1 WARNING test_module odoo.addons.tada_admin.services.authorization_service: Access denied: Company Test Company (ID: 189) attempted to access unauthorized PODs: POD999 
+2025-08-31 00:11:19,716 1 INFO test_module odoo.addons.tada_admin.tests.test_authorization_service: Starting TestAuthorizationService.test_validate_pod_access_success ... 
+2025-08-31 00:11:19,784 1 INFO test_module odoo.addons.tada_admin.services.authorization_service: Retrieved 2 authorized PODs for company Test Company (ID: 190) 
+2025-08-31 00:11:19,784 1 INFO test_module odoo.addons.tada_admin.services.authorization_service: POD access validated: Company Test Company (ID: 190) authorized for 1 PODs 
+2025-08-31 00:11:19,785 1 INFO test_module odoo.addons.tada_admin.services.authorization_service: Retrieved 2 authorized PODs for company Test Company (ID: 190) 
+2025-08-31 00:11:19,785 1 INFO test_module odoo.addons.tada_admin.services.authorization_service: POD access validated: Company Test Company (ID: 190) authorized for 2 PODs 
+2025-08-31 00:11:19,807 1 INFO test_module odoo.addons.base.models.ir_attachment: filestore gc 3 checked, 0 removed 
+2025-08-31 00:11:19,808 1 INFO test_module odoo.addons.tada_admin.tests.test_company_permissions: Starting TestCompanyPermissions.test_audit_fields_on_write ... 
+2025-08-31 00:11:20,049 1 INFO test_module odoo.addons.tada_admin.tests.test_company_permissions: Starting TestCompanyPermissions.test_check_company_exists_constraint ... 
+2025-08-31 00:11:20,251 1 INFO test_module odoo.addons.tada_admin.tests.test_company_permissions: Starting TestCompanyPermissions.test_check_permission_invalid_type ... 
+2025-08-31 00:11:20,375 1 INFO test_module odoo.addons.tada_admin.tests.test_company_permissions: Starting TestCompanyPermissions.test_check_permission_valid ... 
+2025-08-31 00:11:20,503 1 INFO test_module odoo.addons.tada_admin.tests.test_company_permissions: Starting TestCompanyPermissions.test_create_company_permissions ... 
+2025-08-31 00:11:20,639 1 INFO test_module odoo.addons.tada_admin.tests.test_company_permissions: Starting TestCompanyPermissions.test_create_company_permissions_with_custom_values ... 
+2025-08-31 00:11:20,777 1 INFO test_module odoo.addons.tada_admin.tests.test_company_permissions: Starting TestCompanyPermissions.test_get_companies_with_permission ... 
+2025-08-31 00:11:20,910 1 INFO test_module odoo.addons.tada_admin.tests.test_company_permissions: Starting TestCompanyPermissions.test_get_companies_with_permission_invalid_type ... 
+2025-08-31 00:11:21,037 1 INFO test_module odoo.addons.tada_admin.tests.test_company_permissions: Starting TestCompanyPermissions.test_get_company_permissions_existing ... 
+2025-08-31 00:11:21,165 1 INFO test_module odoo.addons.tada_admin.tests.test_company_permissions: Starting TestCompanyPermissions.test_get_company_permissions_non_existing ... 
+2025-08-31 00:11:21,293 1 INFO test_module odoo.addons.tada_admin.tests.test_company_permissions: Starting TestCompanyPermissions.test_set_company_permissions_existing ... 
+2025-08-31 00:11:21,421 1 INFO test_module odoo.addons.tada_admin.tests.test_company_permissions: Starting TestCompanyPermissions.test_set_company_permissions_invalid_key ... 
+2025-08-31 00:11:21,552 1 INFO test_module odoo.addons.tada_admin.tests.test_company_permissions: Starting TestCompanyPermissions.test_set_company_permissions_new ... 
+2025-08-31 00:11:21,694 1 INFO test_module odoo.addons.tada_admin.tests.test_company_permissions: Starting TestCompanyPermissions.test_unique_company_constraint ... 
+2025-08-31 00:11:21,828 1 ERROR test_module odoo.sql_db: bad query: b'INSERT INTO "tada_admin_company_permissions" ("company_id", "create_date", "create_uid", "created_date", "has_configurazione_ammissibilita", "has_configurazione_associazione", "has_magazzino", "has_monitoraggio", "has_spedizione", "is_partner_energia", "last_modified", "modified_by", "write_date", "write_uid") VALUES (218, \'2025-08-31 00:11:19.808311\', 1, \'2025-08-31 00:11:21\', false, false, false, true, false, false, \'2025-08-31 00:11:21\', 1, \'2025-08-31 00:11:19.808311\', 1) RETURNING "id"'
+ERROR: duplicate key value violates unique constraint "tada_admin_company_permissions_unique_company_permissions"
+DETAIL:  Key (company_id)=(218) already exists.
+ 
+2025-08-31 00:11:21,847 1 INFO test_module odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2025-08-31 00:11:21,848 1 INFO test_module odoo.addons.tada_admin.tests.test_pod_authorization: Starting TestPODAuthorization.test_activate_deactivate_pod ... 
+2025-08-31 00:11:21,985 1 INFO test_module odoo.addons.tada_admin.tests.test_pod_authorization: Starting TestPODAuthorization.test_audit_fields_on_write ... 
+2025-08-31 00:11:22,216 1 INFO test_module odoo.addons.tada_admin.tests.test_pod_authorization: Starting TestPODAuthorization.test_create_pod_authorization ... 
+2025-08-31 00:11:22,358 1 INFO test_module odoo.addons.tada_admin.tests.test_pod_authorization: Starting TestPODAuthorization.test_empty_pod_code_validation ... 
+2025-08-31 00:11:22,490 1 ERROR test_module odoo.sql_db: bad query: b'INSERT INTO "tada_admin_pod_authorization" ("company_id", "create_date", "create_uid", "created_date", "is_active", "last_modified", "modified_by", "pod_code", "pod_name", "write_date", "write_uid") VALUES (226, \'2025-08-31 00:11:21.848334\', 1, \'2025-08-31 00:11:22\', true, \'2025-08-31 00:11:22\', 1, \'\', \'Empty POD Code\', \'2025-08-31 00:11:21.848334\', 1) RETURNING "id"'
+ERROR: new row for relation "tada_admin_pod_authorization" violates check constraint "tada_admin_pod_authorization_pod_code_not_empty"
+DETAIL:  Failing row contains (126, 226, 1, 1, 1, , Empty POD Code, null, t, null, 2025-08-31 00:11:22, 2025-08-31 00:11:22, 2025-08-31 00:11:21.848334, 2025-08-31 00:11:21.848334).
+ 
+2025-08-31 00:11:22,492 1 ERROR test_module odoo.sql_db: bad query: b'INSERT INTO "tada_admin_pod_authorization" ("company_id", "create_date", "create_uid", "created_date", "is_active", "last_modified", "modified_by", "pod_code", "pod_name", "write_date", "write_uid") VALUES (226, \'2025-08-31 00:11:21.848334\', 1, \'2025-08-31 00:11:22\', true, \'2025-08-31 00:11:22\', 1, \'   \', \'Whitespace POD Code\', \'2025-08-31 00:11:21.848334\', 1) RETURNING "id"'
+ERROR: new row for relation "tada_admin_pod_authorization" violates check constraint "tada_admin_pod_authorization_pod_code_not_empty"
+DETAIL:  Failing row contains (127, 226, 1, 1, 1,    , Whitespace POD Code, null, t, null, 2025-08-31 00:11:22, 2025-08-31 00:11:22, 2025-08-31 00:11:21.848334, 2025-08-31 00:11:21.848334).
+ 
+2025-08-31 00:11:22,493 1 INFO test_module odoo.addons.tada_admin.tests.test_pod_authorization: Starting TestPODAuthorization.test_get_authorized_pods_for_company ... 
+2025-08-31 00:11:22,631 1 INFO test_module odoo.addons.tada_admin.tests.test_pod_authorization: Starting TestPODAuthorization.test_is_pod_authorized_for_company ... 
+2025-08-31 00:11:22,778 1 INFO test_module odoo.addons.tada_admin.tests.test_pod_authorization: Starting TestPODAuthorization.test_name_get ... 
+2025-08-31 00:11:22,918 1 INFO test_module odoo.addons.tada_admin.tests.test_pod_authorization: Starting TestPODAuthorization.test_pod_code_trimming ... 
+2025-08-31 00:11:23,046 1 INFO test_module odoo.addons.tada_admin.tests.test_pod_authorization: Starting TestPODAuthorization.test_same_pod_different_companies ... 
+2025-08-31 00:11:23,180 1 INFO test_module odoo.addons.tada_admin.tests.test_pod_authorization: Starting TestPODAuthorization.test_sync_with_chain2gate ... 
+2025-08-31 00:11:23,307 1 INFO test_module odoo.addons.tada_admin.tests.test_pod_authorization: Starting TestPODAuthorization.test_unique_company_pod_constraint ... 
+2025-08-31 00:11:23,437 1 ERROR test_module odoo.sql_db: bad query: b'INSERT INTO "tada_admin_pod_authorization" ("company_id", "create_date", "create_uid", "created_date", "is_active", "last_modified", "modified_by", "pod_code", "pod_name", "write_date", "write_uid") VALUES (240, \'2025-08-31 00:11:21.848334\', 1, \'2025-08-31 00:11:23\', true, \'2025-08-31 00:11:23\', 1, \'POD001\', \'Duplicate POD 001\', \'2025-08-31 00:11:21.848334\', 1) RETURNING "id"'
+ERROR: duplicate key value violates unique constraint "tada_admin_pod_authorization_unique_company_pod"
+DETAIL:  Key (company_id, pod_code)=(240, POD001) already exists.
+ 
+2025-08-31 00:11:23,457 1 INFO test_module odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2025-08-31 00:11:23,466 1 INFO test_module odoo.modules.loading: Module tada_admin loaded in 5.31s (incl. 4.36s test), 717 queries (+4093 test, +717 other) 
+2025-08-31 00:11:23,478 1 INFO test_module odoo.modules.loading: 13 modules loaded in 5.49s, 717 queries (+4810 extra) 
+2025-08-31 00:11:23,566 1 INFO test_module odoo.modules.registry: verifying fields for every extended model 
+2025-08-31 00:11:23,834 1 INFO test_module odoo.modules.loading: Modules loaded. 
+2025-08-31 00:11:23,839 1 INFO test_module odoo.modules.registry: Registry changed, signaling through the database 
+2025-08-31 00:11:23,840 1 INFO test_module odoo.modules.registry: Registry loaded in 6.809s 
+2025-08-31 00:11:23,840 1 INFO test_module odoo.service.server: Starting post tests 
+2025-08-31 00:11:23,866 1 INFO test_module odoo.service.server: 0 post-tests in 0.03s, 0 queries 
+2025-08-31 00:11:23,866 1 INFO test_module odoo.tests.stats: tada_admin: 40 tests 4.36s 4093 queries 
+2025-08-31 00:11:23,866 1 INFO test_module odoo.tests.result: 0 failed, 0 error(s) of 34 tests when loading database 'test_module' 
+2025-08-31 00:11:23,867 1 INFO test_module odoo.service.server: Initiating shutdown 
+2025-08-31 00:11:23,867 1 INFO test_module odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2025-08-31 00:11:24,079 1 INFO test_module odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 2 connections  

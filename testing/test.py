@@ -53,7 +53,7 @@ def test():
     
     success = result.returncode == 0 and "ERROR" not in result.stderr and "CRITICAL" not in result.stderr
     
-    print(f"Result: {'✅ PASS' if success else '❌ FAIL'}")
+    print(f"Result: {'PASS' if success else 'FAIL'}")
     print(f"Log saved to: {log_file}")
     
     if not success and "ImportError" in result.stderr:
@@ -117,7 +117,7 @@ def run_unit_tests():
     success = result.returncode == 0
     test_failures = re.findall(r'(ERROR|FAIL): (\w+)', result.stdout)
     
-    print(f"Unit Test Result: {'✅ PASS' if success else '❌ FAIL'}")
+    print(f"Unit Test Result: {'PASS' if success else 'FAIL'}")
     print(f"Log saved to: {log_file}")
     
     if test_failures:
@@ -185,7 +185,7 @@ def run_module_tests():
     success = result.returncode == 0
     test_failures = re.findall(rf'(ERROR|FAIL): ({MODULE}\.\w+)', result.stdout)
     
-    print(f"Module Test Result: {'✅ PASS' if success else '❌ FAIL'}")
+    print(f"Module Test Result: {'PASS' if success else 'FAIL'}")
     print(f"Log saved to: {log_file}")
     
     if test_failures:
@@ -209,8 +209,8 @@ def run_all_tests():
     unit_success = run_unit_tests()
     
     print("\n=== Test Summary ===")
-    print(f"Installation Test: {'✅ PASS' if install_success else '❌ FAIL'}")
-    print(f"Unit Tests: {'✅ PASS' if unit_success else '❌ FAIL'}")
+    print(f"Installation Test: {'PASS' if install_success else 'FAIL'}")
+    print(f"Unit Tests: {'PASS' if unit_success else 'FAIL'}")
     
     return install_success and unit_success
 

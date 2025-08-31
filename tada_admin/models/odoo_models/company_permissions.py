@@ -164,7 +164,20 @@ class CompanyPermissions(models.Model):
             raise ValidationError(f"Invalid permission type: {permission_type}")
         
         permissions = self.get_company_permissions(company_id)
-        permission_key = f'has_{permission_type.lower()}'
+        
+        # Map permission types to field names
+        permission_field_mapping = {
+            'PARTNER_ENERGIA': 'is_partner_energia',
+            'CONFIGURAZIONE_AMMISSIBILITA': 'has_configurazione_ammissibilita',
+            'CONFIGURAZIONE_ASSOCIAZIONE': 'has_configurazione_associazione',
+            'MAGAZZINO': 'has_magazzino',
+            'SPEDIZIONE': 'has_spedizione',
+            'MONITORAGGIO': 'has_monitoraggio'
+        }
+        
+        permission_key = permission_field_mapping.get(permission_type)
+        if not permission_key:
+            raise ValidationError(f"No field mapping for permission type: {permission_type}")
         
         return permissions.get(permission_key, False)
 
@@ -226,7 +239,20 @@ class CompanyPermissions(models.Model):
         if permission_type not in valid_permissions:
             raise ValidationError(f"Invalid permission type: {permission_type}")
         
-        permission_field = f'has_{permission_type.lower()}'
+        # Map permission types to field names
+        permission_field_mapping = {
+            'PARTNER_ENERGIA': 'is_partner_energia',
+            'CONFIGURAZIONE_AMMISSIBILITA': 'has_configurazione_ammissibilita',
+            'CONFIGURAZIONE_ASSOCIAZIONE': 'has_configurazione_associazione',
+            'MAGAZZINO': 'has_magazzino',
+            'SPEDIZIONE': 'has_spedizione',
+            'MONITORAGGIO': 'has_monitoraggio'
+        }
+        
+        permission_field = permission_field_mapping.get(permission_type)
+        if not permission_field:
+            raise ValidationError(f"No field mapping for permission type: {permission_type}")
+        
         domain = [(permission_field, '=', True)]
         
         permission_records = self.search(domain)
