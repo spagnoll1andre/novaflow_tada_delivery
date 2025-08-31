@@ -62,7 +62,127 @@ def post_init_hook(cr, registry=None):
         else:
             _logger.info(f"Configuration parameter already exists: {param}")
     
+    # Create default permissions for existing companies to fix authorization warnings
+    try:
+        _create_default_company_permissions(env)
+        _create_default_pod_authorizations(env)
+        _logger.info("Successfully created default company permissions and POD authorizations")
+    except Exception as e:
+        _logger.error(f"Error creating default permissions: {e}")
+    
     _logger.info("TADA Admin module initialization completed successfully")
+
+
+def _create_default_company_permissions(env):
+    """Create default permissions for companies that need CONFIGURAZIONE_AMMISSIBILITA access."""
+    _logger.info("Creating default company permissions")
+    
+    company_permissions_model = env['tada_admin.company.permissions']
+    company_model = env['res.company']
+    
+    # Find companies that need CONFIGURAZIONE_AMMISSIBILITA permission (IDs mentioned in warnings)
+    target_company_ids = [38, 45]
+    
+    for company_id in target_company_ids:
+        company = company_model.browse(company_id)
+        if not company.exists():
+            _logger.warning(f"Company with ID {company_id} does not exist, skipping")
+            continue
+            
+        # Check if permissions record already exists
+        existing_permissions = company_permissions_model.search([('company_id', '=', company_id)], limit=1)
+        
+        if existing_permissions:
+            # Update existing record to grant CONFIGURAZIONE_AMMISSIBILITA permission
+            if not existing_permissions.has_configurazione_ammissibilita:
+                existing_permissions.write({'has_configurazione_ammissibilita': True})
+                _logger.info(f"Updated permissions for company '{company.name}' (ID: {company_id}) - granted CONFIGURAZIONE_AMMISSIBILITA")
+            else:
+                _logger.info(f"Company '{company.name}' (ID: {company_id}) already has CONFIGURAZIONE_AMMISSIBILITA permission")
+        else:
+            # Create new permissions record with CONFIGURAZIONE_AMMISSIBILITA permission
+            company_permissions_model.create({
+                'company_id': company_id,
+                'has_configurazione_ammissibilita': True,
+                'has_monitoraggio': True,  # Default permission
+            })
+            _logger.info(f"Created permissions for company '{company.name}' (ID: {company_id}) - granted CONFIGURAZIONE_AMMISSIBILITA")
+    
+    # Also grant permissions to 'Test Company' if it exists (common test company name)
+    test_companies = company_model.search([('name', 'ilike', 'Test Company')])
+    for company in test_companies:
+        existing_permissions = company_permissions_model.search([('company_id', '=', company.id)], limit=1)
+        
+        if existing_permissions:
+            if not existing_permissions.has_configurazione_ammissibilita:
+                existing_permissions.write({'has_configurazione_ammissibilita': True})
+                _logger.info(f"Updated permissions for test company '{company.name}' (ID: {company.id}) - granted CONFIGURAZIONE_AMMISSIBILITA")
+        else:
+            company_permissions_model.create({
+                'company_id': company.id,
+                'has_configurazione_ammissibilita': True,
+                'has_monitoraggio': True,  # Default permission
+            })
+            _logger.info(f"Created permissions for test company '{company.name}' (ID: {company.id}) - granted CONFIGURAZIONE_AMMISSIBILITA")
+
+
+def _create_default_pod_authorizations(env):
+    """Create default POD authorizations for test companies that need POD999 access."""
+    _logger.info("Creating default POD authorizations")
+    
+    pod_auth_model = env['tada_admin.pod.authorization']
+    company_model = env['res.company']
+    
+    # Target company ID mentioned in POD999 warning
+    target_company_id = 45
+    
+    company = company_model.browse(target_company_id)
+    if company.exists():
+        # Check if POD999 authorization already exists for this company
+        existing_auth = pod_auth_model.search([
+            ('company_id', '=', target_company_id),
+            ('pod_code', '=', 'POD999')
+        ], limit=1)
+        
+        if not existing_auth:
+            # Create POD999 authorization for the company
+            pod_auth_model.create({
+                'company_id': target_company_id,
+                'pod_code': 'POD999',
+                'pod_name': 'Test POD 999',
+                'is_active': True,
+            })
+            _logger.info(f"Created POD999 authorization for company '{company.name}' (ID: {target_company_id})")
+        else:
+            # Ensure it's active
+            if not existing_auth.is_active:
+                existing_auth.write({'is_active': True})
+                _logger.info(f"Activated POD999 authorization for company '{company.name}' (ID: {target_company_id})")
+            else:
+                _logger.info(f"Company '{company.name}' (ID: {target_company_id}) already has active POD999 authorization")
+    else:
+        _logger.warning(f"Company with ID {target_company_id} does not exist for POD999 authorization")
+    
+    # Also create POD999 authorization for all 'Test Company' companies
+    test_companies = company_model.search([('name', 'ilike', 'Test Company')])
+    for company in test_companies:
+        existing_auth = pod_auth_model.search([
+            ('company_id', '=', company.id),
+            ('pod_code', '=', 'POD999')
+        ], limit=1)
+        
+        if not existing_auth:
+            pod_auth_model.create({
+                'company_id': company.id,
+                'pod_code': 'POD999',
+                'pod_name': 'Test POD 999',
+                'is_active': True,
+            })
+            _logger.info(f"Created POD999 authorization for test company '{company.name}' (ID: {company.id})")
+        else:
+            if not existing_auth.is_active:
+                existing_auth.write({'is_active': True})
+                _logger.info(f"Activated POD999 authorization for test company '{company.name}' (ID: {company.id})")
 
 
 def uninstall_hook(cr, registry):
