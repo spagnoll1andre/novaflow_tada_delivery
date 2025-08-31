@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b48f425b-ae3c-48f6-9fea-50a3d7a1e4cd" name="Changes" comment="[ADD] TADA_ERP fix6 new folder">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tada_admin/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/__manifest__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tada_admin/views/menu_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/views/menu_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tada_admin/security/tada_security_groups.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/security/tada_security_groups.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -413,7 +412,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756626724638</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="[ADD] TADA_ERP fix6 new folder">
+      <option name="closed" value="true" />
+      <created>1756664334439</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1756664334439</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
