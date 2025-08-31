@@ -7,7 +7,7 @@ from odoo.exceptions import ValidationError
 class PODAuthorization(models.Model):
     _name = 'tada_admin.pod.authorization'
     _description = 'POD Authorization for Companies'
-    _rec_name = 'pod_code'
+    _rec_name = 'display_name'
     _order = 'company_id, pod_code'
 
     # Core fields
@@ -31,6 +31,12 @@ class PODAuthorization(models.Model):
         string='Active',
         default=True,
         help='Whether this POD authorization is currently active'
+    )
+    display_name = fields.Char(
+        string='Display Name',
+        compute='_compute_display_name',
+        store=False,
+        help='Computed display name for POD authorization'
     )
 
     # Chain2Gate sync fields
@@ -164,14 +170,13 @@ class PODAuthorization(models.Model):
         
         return bool(authorization)
 
-    def name_get(self):
-        """Custom name display for POD Authorization records"""
-        result = []
+    @api.depends('pod_code', 'pod_name', 'company_id.name')
+    def _compute_display_name(self):
+        """Compute display name for POD Authorization records"""
         for record in self:
-            name = f"{record.pod_code}"
+            name = record.pod_code or ''
             if record.pod_name:
                 name += f" ({record.pod_name})"
             if record.company_id:
                 name += f" - {record.company_id.name}"
-            result.append((record.id, name))
-        return result
+            record.display_name = name
