@@ -46,14 +46,13 @@ class TestPODAuthorization(TransactionCase):
             'pod_name': 'Test POD 001'
         })
         
-        # Try to create duplicate - should raise UniqueViolation
-        with self.assertRaises((psycopg2.errors.UniqueViolation, psycopg2.IntegrityError)):
-            with self.cr.savepoint():  # Use savepoint to handle transaction rollback
-                self.PODAuthorization.create({
-                    'company_id': self.company_a.id,
-                    'pod_code': 'POD001',
-                    'pod_name': 'Duplicate POD 001'
-                })
+        # Try to create duplicate - should raise ValidationError
+        with self.assertRaises(ValidationError):
+            self.PODAuthorization.create({
+                'company_id': self.company_a.id,
+                'pod_code': 'POD001',
+                'pod_name': 'Duplicate POD 001'
+            })
 
     def test_same_pod_different_companies(self):
         """Test that the same POD can be assigned to different companies"""
@@ -76,21 +75,19 @@ class TestPODAuthorization(TransactionCase):
 
     def test_empty_pod_code_validation(self):
         """Test that empty POD codes are not allowed"""
-        with self.assertRaises((psycopg2.errors.CheckViolation, ValidationError)):
-            with self.cr.savepoint():  # Use savepoint to handle transaction rollback
-                self.PODAuthorization.create({
-                    'company_id': self.company_a.id,
-                    'pod_code': '',
-                    'pod_name': 'Empty POD Code'
-                })
+        with self.assertRaises(ValidationError):
+            self.PODAuthorization.create({
+                'company_id': self.company_a.id,
+                'pod_code': '',
+                'pod_name': 'Empty POD Code'
+            })
         
-        with self.assertRaises((psycopg2.errors.CheckViolation, ValidationError)):
-            with self.cr.savepoint():  # Use savepoint to handle transaction rollback
-                self.PODAuthorization.create({
-                    'company_id': self.company_a.id,
-                    'pod_code': '   ',  # Only whitespace
-                    'pod_name': 'Whitespace POD Code'
-                })
+        with self.assertRaises(ValidationError):
+            self.PODAuthorization.create({
+                'company_id': self.company_a.id,
+                'pod_code': '   ',  # Only whitespace
+                'pod_name': 'Whitespace POD Code'
+            })
 
     def test_pod_code_trimming(self):
         """Test that POD codes are trimmed of whitespace"""

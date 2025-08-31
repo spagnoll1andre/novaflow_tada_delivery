@@ -1,9 +1,9 @@
 === ODOO MODULE TEST LOG (Complete) ===
-Exit code: 125
-Module path: C:\Users\Andrea\PycharmProjects\novaflow_tada_delivery\novaflow_tada-feature-tada-admin\tada_admin
+Exit code: 0
+Module path: C:\Users\Andrea\PycharmProjects\novaflow_tada_delivery_local\tada_admin
 
 === STDOUT ===
 
 
 === STDERR ===
-docker: Error response from daemon: Cannot link to a non running container: /odoo_pg AS /sweet_ganguly/db.
+Warn: Can't find .pfb for face 'Courier'

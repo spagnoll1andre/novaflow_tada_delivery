@@ -61,11 +61,10 @@ class TestCompanyPermissions(TransactionCase):
         })
         
         # Try to create second permissions record for same company
-        with self.assertRaises((psycopg2.errors.UniqueViolation, psycopg2.IntegrityError)):
-            with self.cr.savepoint():  # Use savepoint to handle transaction rollback
-                self.CompanyPermissions.create({
-                    'company_id': self.company_a.id,
-                })
+        with self.assertRaises(ValidationError):
+            self.CompanyPermissions.create({
+                'company_id': self.company_a.id,
+            })
 
     def test_get_company_permissions_existing(self):
         """Test getting permissions for existing company"""

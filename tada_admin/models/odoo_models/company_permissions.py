@@ -81,11 +81,20 @@ class CompanyPermissions(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
-        """Override create to set audit fields"""
+        """Override create to set audit fields and prevent duplicates"""
         now = fields.Datetime.now()
         user_id = self.env.user.id
         
         for vals in vals_list:
+            # Check for existing permissions record for this company
+            if 'company_id' in vals:
+                existing = self.search([('company_id', '=', vals['company_id'])], limit=1)
+                if existing:
+                    company_name = self.env['res.company'].browse(vals['company_id']).name
+                    raise ValidationError(
+                        f"Company '{company_name}' already has a permissions record"
+                    )
+            
             vals['created_date'] = now
             vals['modified_by'] = user_id
             

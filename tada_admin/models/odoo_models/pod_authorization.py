@@ -35,7 +35,7 @@ class PODAuthorization(models.Model):
     display_name = fields.Char(
         string='Display Name',
         compute='_compute_display_name',
-        store=False,
+        store=True,
         help='Computed display name for POD authorization'
     )
 
@@ -79,11 +79,32 @@ class PODAuthorization(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
-        """Override create to update audit fields"""
+        """Override create to update audit fields and validate POD codes"""
         now = fields.Datetime.now()
         user_id = self.env.user.id
         
         for vals in vals_list:
+            # Validate and clean pod_code
+            if 'pod_code' in vals:
+                if not vals['pod_code']:
+                    raise ValidationError("POD code is required and cannot be empty")
+                pod_code = str(vals['pod_code']).strip()
+                if not pod_code:
+                    raise ValidationError("POD code cannot be empty or contain only whitespace")
+                vals['pod_code'] = pod_code
+            
+            # Check for duplicate company-pod combination
+            if 'company_id' in vals and 'pod_code' in vals:
+                existing = self.search([
+                    ('company_id', '=', vals['company_id']),
+                    ('pod_code', '=', vals['pod_code'])
+                ], limit=1)
+                if existing:
+                    company_name = self.env['res.company'].browse(vals['company_id']).name
+                    raise ValidationError(
+                        f"POD '{vals['pod_code']}' is already assigned to company '{company_name}'"
+                    )
+            
             vals['created_date'] = now
             vals['last_modified'] = now
             vals['modified_by'] = user_id
@@ -91,7 +112,16 @@ class PODAuthorization(models.Model):
         return super(PODAuthorization, self).create(vals_list)
 
     def write(self, vals):
-        """Override write to update audit fields"""
+        """Override write to update audit fields and validate POD codes"""
+        # Validate and clean pod_code if being updated
+        if 'pod_code' in vals:
+            if not vals['pod_code']:
+                raise ValidationError("POD code is required and cannot be empty")
+            pod_code = str(vals['pod_code']).strip()
+            if not pod_code:
+                raise ValidationError("POD code cannot be empty or contain only whitespace")
+            vals['pod_code'] = pod_code
+        
         vals['last_modified'] = fields.Datetime.now()
         vals['modified_by'] = self.env.user.id
         return super(PODAuthorization, self).write(vals)
@@ -100,15 +130,12 @@ class PODAuthorization(models.Model):
     def _check_pod_code_format(self):
         """Validate POD code format"""
         for record in self:
-            if record.pod_code:
-                # Remove whitespace and check if empty
-                pod_code = record.pod_code.strip()
-                if not pod_code:
-                    raise ValidationError("POD code cannot be empty or contain only whitespace")
-                
-                # Update the record with trimmed value
-                if pod_code != record.pod_code:
-                    record.pod_code = pod_code
+            if not record.pod_code:
+                raise ValidationError("POD code is required and cannot be empty")
+            
+            pod_code = record.pod_code.strip()
+            if not pod_code:
+                raise ValidationError("POD code cannot be empty or contain only whitespace")
 
     @api.constrains('company_id', 'pod_code')
     def _check_unique_company_pod(self):
