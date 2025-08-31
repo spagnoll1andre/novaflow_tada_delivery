@@ -86,7 +86,7 @@ and POD authorizations. The wizard will guide you through the setup process.
     'auto_install': False,
     'application': True,
     'sequence': 10,
-    'images': ['static/description/icon.png'],
+    'images': [],
     'pre_init_hook': 'pre_init_hook',
     'post_init_hook': 'post_init_hook',
     'uninstall_hook': 'uninstall_hook',
