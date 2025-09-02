@@ -1,70 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    
+
     <!-- Main Menu -->
-    <menuitem id="menu_tada_admin_main" 
-              name="TADA Admin" 
-              web_icon="fa-bolt"
+    <menuitem id="menu_tada_admin_main"
+              name="TaDa Onboarding"
+              web_icon="tada_admin,static/description/icon.png"
+              groups="tada_admin.group_tada_admin_admin,tada_admin.group_tada_admin_manager,tada_admin.group_tada_admin_partner"
               sequence="10"/>
 
     <!-- Customers Menu -->
-    <menuitem id="menu_tada_admin_customers" 
-              name="Customers" 
-              parent="menu_tada_admin_main" 
+    <menuitem id="menu_tada_admin_customers"
+              name="Customers"
+              parent="menu_tada_admin_main"
               action="action_customer"
-              groups="tada_admin.group_tada_admin_admin,tada_admin.group_tada_admin_manager,tada_admin.group_tada_admin_partner" 
+              groups="tada_admin.group_tada_admin_admin,tada_admin.group_tada_admin_manager"
               sequence="10"/>
 
     <!-- Devices Menu -->
-    <menuitem id="menu_tada_admin_devices" 
-              name="Devices" 
-              parent="menu_tada_admin_main" 
+    <menuitem id="menu_tada_admin_devices"
+              name="Devices"
+              parent="menu_tada_admin_main"
               action="action_device"
-              groups="tada_admin.group_tada_admin_admin,tada_admin.group_tada_admin_manager,tada_admin.group_tada_admin_partner"
+              groups="tada_admin.group_tada_admin_admin,tada_admin.group_tada_admin_manager"
               sequence="20"/>
 
     <!-- Requests Menu -->
-    <menuitem id="menu_tada_admin_requests" 
-              name="Requests" 
+    <menuitem id="menu_tada_admin_requests"
+              name="Requests"
               parent="menu_tada_admin_main"
-              groups="tada_admin.group_tada_admin_admin,tada_admin.group_tada_admin_manager,tada_admin.group_tada_admin_partner"
+              groups="tada_admin.group_tada_admin_admin,tada_admin.group_tada_admin_manager"
               sequence="30"/>
 
     <!-- Admissibility Requests -->
-    <menuitem id="menu_tada_admin_admissibility_requests" 
-              name="Admissibility Requests" 
-              parent="menu_tada_admin_requests" 
+    <menuitem id="menu_tada_admin_admissibility_requests"
+              name="Admissibility Requests"
+              parent="menu_tada_admin_requests"
               action="action_admissibility_request"
-              groups="tada_admin.group_tada_admin_admin,tada_admin.group_tada_admin_manager,tada_admin.group_tada_admin_partner"
+              groups="tada_admin.group_tada_admin_admin,tada_admin.group_tada_admin_manager"
               sequence="10"/>
 
     <!-- Association Requests -->
-    <menuitem id="menu_tada_admin_association_requests" 
-              name="Association Requests" 
-              parent="menu_tada_admin_requests" 
+    <menuitem id="menu_tada_admin_association_requests"
+              name="Association Requests"
+              parent="menu_tada_admin_requests"
               action="action_association_request"
-              groups="tada_admin.group_tada_admin_admin,tada_admin.group_tada_admin_manager,tada_admin.group_tada_admin_partner"
+              groups="tada_admin.group_tada_admin_admin,tada_admin.group_tada_admin_manager"
               sequence="20"/>
 
     <!-- Disassociation Requests -->
-    <menuitem id="menu_tada_admin_disassociation_requests" 
-              name="Disassociation Requests" 
-              parent="menu_tada_admin_requests" 
+    <menuitem id="menu_tada_admin_disassociation_requests"
+              name="Disassociation Requests"
+              parent="menu_tada_admin_requests"
               action="action_disassociation_request"
-              groups="tada_admin.group_tada_admin_admin,tada_admin.group_tada_admin_manager,tada_admin.group_tada_admin_partner"
+              groups="tada_admin.group_tada_admin_admin"
               sequence="30"/>
 
     <!-- Configuration Menu -->
-    <menuitem id="menu_tada_admin_configuration" 
-              name="Configuration" 
+    <menuitem id="menu_tada_admin_configuration"
+              name="Configuration"
               parent="menu_tada_admin_main"
-              groups="tada_admin.group_tada_admin_admin,tada_admin.group_tada_admin_manager"
+              groups="tada_admin.group_tada_admin_admin"
               sequence="40"/>
 
     <!-- Configuration Wizard -->
-    <menuitem id="menu_tada_admin_config_wizard" 
-              name="TADA Configuration" 
-              parent="menu_tada_admin_configuration" 
+    <menuitem id="menu_tada_admin_config_wizard"
+              name="TADA Configuration"
+              parent="menu_tada_admin_configuration"
               action="action_tada_config_wizard"
               groups="tada_admin.group_tada_admin_admin"
               sequence="10"/>

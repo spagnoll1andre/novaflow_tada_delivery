@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b48f425b-ae3c-48f6-9fea-50a3d7a1e4cd" name="Changes" comment="Fase 1 fix" />
+    <list default="true" id="b48f425b-ae3c-48f6-9fea-50a3d7a1e4cd" name="Changes" comment="Fase 1 fix">
+      <change beforePath="$PROJECT_DIR$/tada_admin/security/tada_security_groups.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/security/tada_security_groups.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tada_admin/views/menu_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/views/menu_views.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -464,7 +467,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756833286267</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Fase 1 fix">
+      <option name="closed" value="true" />
+      <created>1756833741657</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1756833741657</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -503,6 +514,7 @@
     <MESSAGE value="[ADD] TADA_ERP fix5 tmp folder" />
     <MESSAGE value="[ADD] TADA_ERP fix6 new folder" />
     <MESSAGE value="Fase 1" />
+    <MESSAGE value="fix: resolve admin and demo user access issues&#10;&#10;Critical access and visibility fixes:&#10;- Remove restrictive groups from main menu (now visible to all users)&#10;- Add proper group assignments for all menu items by user level&#10;- Create auto-assignment of TADA groups to admin and demo users&#10;- Improve security group hierarchy and naming&#10;- Add failsafe mechanism: system users automatically get TADA Admin access&#10;- Fix menu structure:&#10;  * Customers, Devices, Requests: visible to all TADA users&#10;  * Configuration: visible to Admin and Manager only&#10;  * Wizard: Admin only&#10;- Add data file for default user group assignments&#10;&#10;This ensures:&#10;✅ Admin users can see the TADA Admin app&#10;✅ Demo users can access as Manager level&#10;✅ Proper multi-company access control maintained&#10;✅ No users left without access to the application&#10;&#10; Generated with [Claude Code](https://claude.ai/code)&#10;&#10;Co-Authored-By: Claude &lt;noreply@anthropic.com&gt;" />
     <MESSAGE value="Fase 1 fix" />
     <option name="LAST_COMMIT_MESSAGE" value="Fase 1 fix" />
   </component>
