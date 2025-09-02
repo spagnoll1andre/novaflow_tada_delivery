@@ -9,3 +9,4 @@ from . import res_company
 from . import company_permissions
 from . import pod_authorization
 from . import pod_summary
+from . import partner_settings

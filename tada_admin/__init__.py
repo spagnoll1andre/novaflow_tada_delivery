@@ -10,6 +10,7 @@ It serves as the single point of access to Chain2Gate API and manages multi-comp
 from . import models
 from . import services
 from . import wizards
+from . import utils
 
 import logging
 
