@@ -7,6 +7,3 @@ Module path: C:\Users\Andrea\PycharmProjects\novaflow_tada_delivery_local\tada_a
 
 === STDERR ===
 Warn: Can't find .pfb for face 'Courier'
-2025-09-02 17:05:08,785 1 WARNING test odoo.modules.loading: The models ['tada.settings'] have no access rules in module tada_admin, consider adding some, like:
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-tada_admin.access_tada_settings,access_tada_settings,tada_admin.model_tada_settings,base.group_user,1,0,0,0 

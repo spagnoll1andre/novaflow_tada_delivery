@@ -12,15 +12,15 @@
 
         <!-- 1. ADMIN: Super-user della piattaforma -->
         <record id="group_tada_admin_admin" model="res.groups">
-            <field name="name">Admin</field>
+            <field name="name">TADA Admin</field>
             <field name="category_id" ref="module_category_tada_admin_access"/>
-            <field name="implied_ids" eval="[(4, ref('base.group_system'))]"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
             <field name="comment">ADMIN - Full access to everything. Can create, view, edit all dashboards and data across all companies.</field>
         </record>
 
         <!-- 2. MANAGER: TaDa Provider del servizio -->
         <record id="group_tada_admin_manager" model="res.groups">
-            <field name="name">Manager</field>
+            <field name="name">TADA Manager</field>
             <field name="category_id" ref="module_category_tada_admin_access"/>
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
             <field name="comment">MANAGER - Can view Dashboard Admin and all lists. Operational access to all company data. Can create new partners and manage customer data.</field>
@@ -28,10 +28,15 @@
 
         <!-- 3. PARTNER: Partner esterno -->
         <record id="group_tada_admin_partner" model="res.groups">
-            <field name="name">Partner</field>
+            <field name="name">TADA Partner</field>
             <field name="category_id" ref="module_category_tada_admin_access"/>
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
             <field name="comment">PARTNER - Can view Dashboard Partner and own company data only. Can edit customer notes and basic data within own company.</field>
+        </record>
+
+        <!-- Auto-assign Admin group to system users -->
+        <record id="base.group_system" model="res.groups">
+            <field name="implied_ids" eval="[(4, ref('group_tada_admin_admin'))]"/>
         </record>
 
     </data>

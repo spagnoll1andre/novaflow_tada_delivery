@@ -68,6 +68,7 @@ and POD authorizations. The wizard will guide you through the setup process.
         'security/tada_security_groups.xml',
         'security/tada_record_rules.xml',
         'security/ir.model.access.csv',
+        'data/default_user_groups.xml',
         'views/search_views.xml',
         'views/customer_views.xml',
         'views/device_views.xml',

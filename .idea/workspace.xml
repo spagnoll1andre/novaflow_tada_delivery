@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b48f425b-ae3c-48f6-9fea-50a3d7a1e4cd" name="Changes" comment="Fase 1">
-      <change beforePath="$PROJECT_DIR$/tada_admin/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tada_admin/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/__manifest__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tada_admin/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/models/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tada_admin/models/odoo_models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/models/odoo_models/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tada_admin/services/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/services/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tada_admin/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/utils/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tada_admin/views/partner_settings_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/views/partner_settings_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/test.log" beforeDir="false" afterPath="$PROJECT_DIR$/testing/test.log" afterDir="false" />
-    </list>
+    <list default="true" id="b48f425b-ae3c-48f6-9fea-50a3d7a1e4cd" name="Changes" comment="Fase 1 fix" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -441,7 +432,39 @@
       <option name="project" value="LOCAL" />
       <updated>1756828116770</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Fase 1 fix">
+      <option name="closed" value="true" />
+      <created>1756830732721</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1756830732721</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Fase 1 fix">
+      <option name="closed" value="true" />
+      <created>1756832344733</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1756832344733</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Fase 1 fix">
+      <option name="closed" value="true" />
+      <created>1756833281632</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1756833281632</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Fase 1 fix">
+      <option name="closed" value="true" />
+      <created>1756833286267</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1756833286267</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -480,6 +503,7 @@
     <MESSAGE value="[ADD] TADA_ERP fix5 tmp folder" />
     <MESSAGE value="[ADD] TADA_ERP fix6 new folder" />
     <MESSAGE value="Fase 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fase 1" />
+    <MESSAGE value="Fase 1 fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fase 1 fix" />
   </component>
 </project>
