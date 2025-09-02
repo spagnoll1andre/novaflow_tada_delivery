@@ -4,18 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b48f425b-ae3c-48f6-9fea-50a3d7a1e4cd" name="Changes" comment="[ADD] TADA_ERP fix6 new folder">
-      <change afterPath="$PROJECT_DIR$/tada_admin/models/odoo_models/partner_settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tada_admin/views/partner_settings_views.xml" afterDir="false" />
+    <list default="true" id="b48f425b-ae3c-48f6-9fea-50a3d7a1e4cd" name="Changes" comment="Fase 1">
+      <change beforePath="$PROJECT_DIR$/tada_admin/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tada_admin/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/__manifest__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tada_admin/models/odoo_models/admissibility_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/models/odoo_models/admissibility_request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tada_admin/models/odoo_models/association_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/models/odoo_models/association_request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tada_admin/models/odoo_models/customer.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/models/odoo_models/customer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tada_admin/models/odoo_models/device.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/models/odoo_models/device.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tada_admin/models/odoo_models/disassociation_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/models/odoo_models/disassociation_request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tada_admin/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/security/ir.model.access.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tada_admin/security/tada_record_rules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/security/tada_record_rules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tada_admin/security/tada_security_groups.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/security/tada_security_groups.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tada_admin/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tada_admin/models/odoo_models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/models/odoo_models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tada_admin/services/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/services/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tada_admin/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tada_admin/views/partner_settings_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/views/partner_settings_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/test.log" beforeDir="false" afterPath="$PROJECT_DIR$/testing/test.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +68,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "ml.llm.LLMConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -436,7 +433,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756664334439</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Fase 1">
+      <option name="closed" value="true" />
+      <created>1756828116770</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1756828116770</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

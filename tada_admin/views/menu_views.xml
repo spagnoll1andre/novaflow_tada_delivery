@@ -4,6 +4,8 @@
     <!-- Main Menu -->
     <menuitem id="menu_tada_admin_main" 
               name="TADA Admin" 
+              web_icon="fa-bolt"
+              groups="base.group_user"
               sequence="10"/>
 
     <!-- Customers Menu -->
