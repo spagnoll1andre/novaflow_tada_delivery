@@ -24,3 +24,4 @@ access_tada_pod_authorization_admin,tada.pod.authorization.admin,model_tada_admi
 access_tada_pod_authorization_manager,tada.pod.authorization.manager,model_tada_admin_pod_authorization,tada_admin.group_tada_admin_manager,1,0,0,0
 access_tada_pod_summary_admin,tada.pod.summary.admin,model_tada_admin_pod_summary,tada_admin.group_tada_admin_admin,1,1,1,1
 access_tada_pod_summary_manager,tada.pod.summary.manager,model_tada_admin_pod_summary,tada_admin.group_tada_admin_manager,1,0,0,0
+access_tada_settings_admin,tada.settings.admin,model_tada_settings,tada_admin.group_tada_admin_admin,1,1,1,1
