@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- ====== PARTNER SETTINGS VIEWS ====== -->
+
+        <!-- Tree View -->
+        <record id="view_tada_partner_settings_tree" model="ir.ui.view">
+            <field name="name">tada.partner.settings.tree</field>
+            <field name="model">tada.partner.settings</field>
+            <field name="arch" type="xml">
+                <tree string="Partner Settings">
+                    <field name="partner_name"/>
+                    <field name="company_id"/>
+                    <field name="partner_type"/>
+                    <field name="contact_email"/>
+                    <field name="active"/>
+                    <field name="created_at"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_tada_partner_settings_form" model="ir.ui.view">
+            <field name="name">tada.partner.settings.form</field>
+            <field name="model">tada.partner.settings</field>
+            <field name="arch" type="xml">
+                <form string="Partner Settings">
+                    <header>
+                        <button name="update_company_branding" string="Aggiorna Branding Company"
+                                type="object" class="btn-primary"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+
+                        <div class="oe_title">
+                            <h1>
+                                <field name="partner_name" placeholder="Nome Partner"/>
+                            </h1>
+                        </div>
+
+                        <group>
+                            <group name="basic_info" string="Informazioni Base">
+                                <field name="company_id" options="{'no_create': True}"/>
+                                <field name="partner_type"/>
+                                <field name="created_at" readonly="1"/>
+                            </group>
+                            <group name="contact_info" string="Contatti">
+                                <field name="contact_email"/>
+                                <field name="contact_phone"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Branding" name="branding">
+                                <group>
+                                    <group name="logo" string="Logo">
+                                        <field name="logo" widget="image" class="oe_avatar"/>
+                                        <field name="logo_filename"/>
+                                        <field name="logo_url" readonly="1"/>
+                                    </group>
+                                    <group name="colors" string="Colori">
+                                        <field name="background_color" widget="color"/>
+                                        <field name="accent_color" widget="color"/>
+                                        <field name="text_color" widget="color"/>
+                                    </group>
+                                </group>
+
+                                <group name="css_preview" string="Anteprima CSS">
+                                    <field name="css_variables" readonly="1" widget="text"/>
+                                </group>
+                            </page>
+
+                            <page string="CSS Personalizzato" name="custom_css">
+                                <field name="custom_css" widget="ace" options="{'mode': 'css'}"/>
+                            </page>
+
+                            <page string="Note" name="notes">
+                                <field name="notes" widget="text"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Search View -->
+        <record id="view_tada_partner_settings_search" model="ir.ui.view">
+            <field name="name">tada.partner.settings.search</field>
+            <field name="model">tada.partner.settings</field>
+            <field name="arch" type="xml">
+                <search string="Partner Settings">
+                    <field name="partner_name"/>
+                    <field name="company_id"/>
+                    <field name="contact_email"/>
+                    <filter string="Attivi" name="active" domain="[('active', '=', True)]"/>
+                    <filter string="Partner Energetici" name="energy_partners"
+                            domain="[('partner_type', '=', 'energy')]"/>
+                    <filter string="Altri Partner" name="other_partners"
+                            domain="[('partner_type', '=', 'other')]"/>
+                    <group expand="0" string="Raggruppa per">
+                        <filter string="Tipo Partner" name="group_by_type"
+                                context="{'group_by': 'partner_type'}"/>
+                        <filter string="Company" name="group_by_company"
+                                context="{'group_by': 'company_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="action_tada_partner_settings" model="ir.actions.act_window">
+            <field name="name">Partner Settings</field>
+            <field name="res_model">tada.partner.settings</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_tada_partner_settings_search"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Crea le prime impostazioni partner!
+                </p>
+                <p>
+                    Le impostazioni partner permettono di personalizzare l'aspetto
+                    delle dashboard per ogni partner con logo, colori e CSS personalizzato.
+                </p>
+            </field>
+        </record>
+
+        <!-- Menu Item (opzionale - da aggiungere al menu principale) -->
+        <menuitem id="menu_tada_partner_settings"
+                  name="Partner Settings"
+                  parent="menu_tada_admin_configuration"
+                  action="action_tada_partner_settings"
+                  sequence="30"/>
+
+    </data>
+</odoo>

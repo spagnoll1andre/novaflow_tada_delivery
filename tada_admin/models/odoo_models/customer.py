@@ -43,6 +43,11 @@ class TadaCustomer(models.Model):
         ('CONSUMER', 'Consumer'),
     ], string='User Type', help='Customer type')
     group = fields.Char(string='Group', index=True)
+
+    # Multi-company support
+    company_id = fields.Many2one('res.company', string='Company',
+                                 required=True, default=lambda self: self.env.company,
+                                 help='Company this customer belongs to')
     
     # Display name computed field
     display_name = fields.Char(string='Display Name', compute='_compute_display_name', store=True)

@@ -74,6 +74,11 @@ class TadaAssociationRequest(models.Model):
     message = fields.Text(string='Message')
     closed_at = fields.Datetime(string='Closed At')
     group = fields.Char(string='Group', index=True)
+
+    # Multi-company support
+    company_id = fields.Many2one('res.company', string='Company',
+                                 required=True, default=lambda self: self.env.company,
+                                 help='Company this request belongs to')
     
     # Customer relationship
     customer_id = fields.Many2one('tada.customer', string='Customer', 

@@ -49,6 +49,11 @@ class TadaDevice(models.Model):
     system_title = fields.Char(string='System Title', help='Device system title')
     group = fields.Char(string='Group', index=True, help='Device group')
     type_name = fields.Char(string='Type Name', index=True, help='Device type name')
+
+    # Multi-company support
+    company_id = fields.Many2one('res.company', string='Company',
+                                 required=True, default=lambda self: self.env.company,
+                                 help='Company this customer belongs to')
     
     # Additional computed fields
     has_consumption = fields.Boolean(string='Has Consumption', compute='_compute_meter_types', store=True)

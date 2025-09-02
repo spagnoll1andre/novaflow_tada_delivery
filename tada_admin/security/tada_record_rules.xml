@@ -1,86 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- Multi-company record rules for TADA ERP models -->
-        
-        <!-- Customer record rules -->
-        <record id="tada_customer_company_rule" model="ir.rule">
-            <field name="name">TADA Customer: multi-company</field>
+        <!-- ====== TADA Admin Record Rules - Multi-Company Isolation ====== -->
+
+        <!-- ====== CUSTOMER RECORD RULES ====== -->
+
+        <!-- Admin e Manager: Accesso a tutte le company -->
+        <record id="tada_customer_admin_manager_rule" model="ir.rule">
+            <field name="name">Customer: Admin/Manager can see all companies</field>
             <field name="model_id" ref="model_tada_customer"/>
-            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
-            <field name="global" eval="True"/>
+            <field name="domain_force">[]</field>
+            <field name="groups" eval="[(4, ref('group_tada_admin_admin')), (4, ref('group_tada_admin_manager'))]"/>
         </record>
 
-        <!-- Device record rules -->
-        <record id="tada_device_company_rule" model="ir.rule">
-            <field name="name">TADA Device: multi-company</field>
+        <!-- Partner: Solo propria company -->
+        <record id="tada_customer_partner_rule" model="ir.rule">
+            <field name="name">Customer: Partner can only see own company</field>
+            <field name="model_id" ref="model_tada_customer"/>
+            <field name="domain_force">[('company_id', '=', user.company_id.id)]</field>
+            <field name="groups" eval="[(4, ref('group_tada_admin_partner'))]"/>
+        </record>
+
+        <!-- ====== DEVICE RECORD RULES ====== -->
+
+        <!-- Admin e Manager: Accesso a tutte le company -->
+        <record id="tada_device_admin_manager_rule" model="ir.rule">
+            <field name="name">Device: Admin/Manager can see all companies</field>
             <field name="model_id" ref="model_tada_device"/>
-            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
-            <field name="global" eval="True"/>
+            <field name="domain_force">[]</field>
+            <field name="groups" eval="[(4, ref('group_tada_admin_admin')), (4, ref('group_tada_admin_manager'))]"/>
         </record>
 
-        <!-- Admissibility Request record rules -->
-        <record id="tada_admissibility_request_company_rule" model="ir.rule">
-            <field name="name">TADA Admissibility Request: multi-company</field>
+        <!-- Partner: Solo propria company -->
+        <record id="tada_device_partner_rule" model="ir.rule">
+            <field name="name">Device: Partner can only see own company</field>
+            <field name="model_id" ref="model_tada_device"/>
+            <field name="domain_force">[('company_id', '=', user.company_id.id)]</field>
+            <field name="groups" eval="[(4, ref('group_tada_admin_partner'))]"/>
+        </record>
+
+        <!-- ====== ADMISSIBILITY REQUEST RECORD RULES ====== -->
+
+        <!-- Admin e Manager: Accesso a tutte le company -->
+        <record id="tada_admissibility_admin_manager_rule" model="ir.rule">
+            <field name="name">Admissibility: Admin/Manager can see all companies</field>
             <field name="model_id" ref="model_tada_admissibility_request"/>
-            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
-            <field name="global" eval="True"/>
+            <field name="domain_force">[]</field>
+            <field name="groups" eval="[(4, ref('group_tada_admin_admin')), (4, ref('group_tada_admin_manager'))]"/>
         </record>
 
-        <!-- Association Request record rules -->
-        <record id="tada_association_request_company_rule" model="ir.rule">
-            <field name="name">TADA Association Request: multi-company</field>
+        <!-- Partner: Solo propria company -->
+        <record id="tada_admissibility_partner_rule" model="ir.rule">
+            <field name="name">Admissibility: Partner can only see own company</field>
+            <field name="model_id" ref="model_tada_admissibility_request"/>
+            <field name="domain_force">[('company_id', '=', user.company_id.id)]</field>
+            <field name="groups" eval="[(4, ref('group_tada_admin_partner'))]"/>
+        </record>
+
+        <!-- ====== ASSOCIATION REQUEST RECORD RULES ====== -->
+
+        <!-- Admin e Manager: Accesso a tutte le company -->
+        <record id="tada_association_admin_manager_rule" model="ir.rule">
+            <field name="name">Association: Admin/Manager can see all companies</field>
             <field name="model_id" ref="model_tada_association_request"/>
-            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
-            <field name="global" eval="True"/>
+            <field name="domain_force">[]</field>
+            <field name="groups" eval="[(4, ref('group_tada_admin_admin')), (4, ref('group_tada_admin_manager'))]"/>
         </record>
 
-        <!-- Disassociation Request record rules -->
-        <record id="tada_disassociation_request_company_rule" model="ir.rule">
-            <field name="name">TADA Disassociation Request: multi-company</field>
+        <!-- Partner: Solo propria company -->
+        <record id="tada_association_partner_rule" model="ir.rule">
+            <field name="name">Association: Partner can only see own company</field>
+            <field name="model_id" ref="model_tada_association_request"/>
+            <field name="domain_force">[('company_id', '=', user.company_id.id)]</field>
+            <field name="groups" eval="[(4, ref('group_tada_admin_partner'))]"/>
+        </record>
+
+        <!-- ====== DISASSOCIATION REQUEST RECORD RULES ====== -->
+
+        <!-- Admin e Manager: Accesso a tutte le company -->
+        <record id="tada_disassociation_admin_manager_rule" model="ir.rule">
+            <field name="name">Disassociation: Admin/Manager can see all companies</field>
             <field name="model_id" ref="model_tada_disassociation_request"/>
-            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
-            <field name="global" eval="True"/>
+            <field name="domain_force">[]</field>
+            <field name="groups" eval="[(4, ref('group_tada_admin_admin')), (4, ref('group_tada_admin_manager'))]"/>
         </record>
 
-        <!-- Configuration wizard access rules (admin only) -->
-        <record id="tada_config_wizard_admin_rule" model="ir.rule">
-            <field name="name">TADA Config Wizard: admin only</field>
-            <field name="model_id" ref="model_tada_config_wizard"/>
-            <field name="domain_force">[(1, '=', 1)]</field>
+        <!-- Partner: Solo propria company -->
+        <record id="tada_disassociation_partner_rule" model="ir.rule">
+            <field name="name">Disassociation: Partner can only see own company</field>
+            <field name="model_id" ref="model_tada_disassociation_request"/>
+            <field name="domain_force">[('company_id', '=', user.company_id.id)]</field>
+            <field name="groups" eval="[(4, ref('group_tada_admin_partner'))]"/>
+        </record>
+
+        <!-- ====== PARTNER SETTINGS RECORD RULES ====== -->
+
+        <!-- Admin: Accesso a tutte le company -->
+        <record id="tada_partner_settings_admin_rule" model="ir.rule">
+            <field name="name">Partner Settings: Admin can see all companies</field>
+            <field name="model_id" ref="model_tada_partner_settings"/>
+            <field name="domain_force">[]</field>
             <field name="groups" eval="[(4, ref('group_tada_admin_admin'))]"/>
         </record>
 
-        <!-- Settings access rules (admin only) -->
-        <record id="tada_settings_admin_rule" model="ir.rule">
-            <field name="name">TADA Settings: admin only</field>
-            <field name="model_id" ref="model_tada_settings"/>
-            <field name="domain_force">[(1, '=', 1)]</field>
+        <!-- Manager: Accesso a tutte le company -->
+        <record id="tada_partner_settings_manager_rule" model="ir.rule">
+            <field name="name">Partner Settings: Manager can see all companies</field>
+            <field name="model_id" ref="model_tada_partner_settings"/>
+            <field name="domain_force">[]</field>
+            <field name="groups" eval="[(4, ref('group_tada_admin_manager'))]"/>
+        </record>
+
+        <!-- Partner: Solo propria company -->
+        <record id="tada_partner_settings_partner_rule" model="ir.rule">
+            <field name="name">Partner Settings: Partner can only see own company</field>
+            <field name="model_id" ref="model_tada_partner_settings"/>
+            <field name="domain_force">[('company_id', '=', user.company_id.id)]</field>
+            <field name="groups" eval="[(4, ref('group_tada_admin_partner'))]"/>
+        </record>
+
+        <!-- ====== CONFIGURATION ACCESS RULES (Solo Admin) ====== -->
+
+        <!-- Configuration wizard access rules (admin only) -->
+        <record id="tada_config_wizard_admin_rule" model="ir.rule">
+            <field name="name">Config Wizard: admin only</field>
+            <field name="model_id" ref="model_tada_config_wizard"/>
+            <field name="domain_force">[]</field>
             <field name="groups" eval="[(4, ref('group_tada_admin_admin'))]"/>
         </record>
 
         <!-- POD Authorization record rules -->
-        <record id="tada_pod_authorization_company_rule" model="ir.rule">
-            <field name="name">TADA POD Authorization: multi-company</field>
+        <record id="tada_pod_authorization_admin_manager_rule" model="ir.rule">
+            <field name="name">POD Authorization: Admin/Manager can see all companies</field>
             <field name="model_id" ref="model_tada_admin_pod_authorization"/>
-            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
-            <field name="global" eval="True"/>
+            <field name="domain_force">[]</field>
+            <field name="groups" eval="[(4, ref('group_tada_admin_admin')), (4, ref('group_tada_admin_manager'))]"/>
         </record>
 
         <!-- Company Permissions record rules -->
-        <record id="tada_company_permissions_company_rule" model="ir.rule">
-            <field name="name">TADA Company Permissions: multi-company</field>
+        <record id="tada_company_permissions_admin_manager_rule" model="ir.rule">
+            <field name="name">Company Permissions: Admin/Manager can see all companies</field>
             <field name="model_id" ref="model_tada_admin_company_permissions"/>
-            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
-            <field name="global" eval="True"/>
+            <field name="domain_force">[]</field>
+            <field name="groups" eval="[(4, ref('group_tada_admin_admin')), (4, ref('group_tada_admin_manager'))]"/>
         </record>
 
         <!-- POD Summary record rules -->
-        <record id="tada_pod_summary_company_rule" model="ir.rule">
-            <field name="name">TADA POD Summary: multi-company</field>
+        <record id="tada_pod_summary_admin_manager_rule" model="ir.rule">
+            <field name="name">POD Summary: Admin/Manager can see all companies</field>
             <field name="model_id" ref="model_tada_admin_pod_summary"/>
-            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
-            <field name="global" eval="True"/>
+            <field name="domain_force">[]</field>
+            <field name="groups" eval="[(4, ref('group_tada_admin_admin')), (4, ref('group_tada_admin_manager'))]"/>
         </record>
+
     </data>
 </odoo>

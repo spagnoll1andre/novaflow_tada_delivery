@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b48f425b-ae3c-48f6-9fea-50a3d7a1e4cd" name="Changes" comment="[ADD] TADA_ERP fix6 new folder">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tada_admin/models/odoo_models/partner_settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tada_admin/views/partner_settings_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tada_admin/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tada_admin/models/odoo_models/admissibility_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/models/odoo_models/admissibility_request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tada_admin/models/odoo_models/association_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/models/odoo_models/association_request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tada_admin/models/odoo_models/customer.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/models/odoo_models/customer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tada_admin/models/odoo_models/device.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/models/odoo_models/device.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tada_admin/models/odoo_models/disassociation_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/models/odoo_models/disassociation_request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tada_admin/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/security/ir.model.access.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tada_admin/security/tada_record_rules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/security/tada_record_rules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tada_admin/security/tada_security_groups.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tada_admin/security/tada_security_groups.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -13,10 +22,17 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/clear-data" />
+        <entry key="$PROJECT_DIR$" value="multicompany-qweb" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -28,12 +44,12 @@
     &quot;assignee&quot;: &quot;VecSec&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/spagnoll1andre/novaflow_tada_delivery.git",
-    "accountId": "143b5c83-8336-418a-984a-d1067000daca"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/spagnoll1andre/novaflow_tada_delivery.git&quot;,
+    &quot;accountId&quot;: &quot;143b5c83-8336-418a-984a-d1067000daca&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -47,7 +63,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "multicompany-qweb",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "/Users/davc-agilelab/Documents/NovaFlow/TaDa/Chain2Gate",
     "node.js.detected.package.eslint": "true",
@@ -458,6 +474,7 @@
     <MESSAGE value="[ADD] TADA_ERP fix4" />
     <MESSAGE value="[ADD] TADA_ERP fix5 tmp folder" />
     <MESSAGE value="[ADD] TADA_ERP fix6 new folder" />
-    <option name="LAST_COMMIT_MESSAGE" value="[ADD] TADA_ERP fix6 new folder" />
+    <MESSAGE value="Fase 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fase 1" />
   </component>
 </project>

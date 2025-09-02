@@ -74,6 +74,7 @@ and POD authorizations. The wizard will guide you through the setup process.
         'views/admissibility_request_views.xml',
         'views/association_request_views.xml',
         'views/disassociation_request_views.xml',
+        'views/partner_settings_views.xml',
         'views/wizard_views.xml',
         'views/company_views.xml',
         'views/menu_views.xml',

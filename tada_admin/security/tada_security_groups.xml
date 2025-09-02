@@ -1,25 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- TADA Admin Security Groups -->
-        <record id="group_tada_admin_user" model="res.groups">
-            <field name="name">TADA Admin User</field>
-            <field name="comment">Basic user access to TADA Admin functionality</field>
+        <!-- ====== TADA Admin Security Groups - Multi-Company Structure ====== -->
+
+        <!-- Override default Administration category -->
+        <record id="module_category_tada_admin_access" model="ir.module.category">
+            <field name="name">TADA Admin Access</field>
+            <field name="description">Access levels for TADA Admin system</field>
+            <field name="sequence">30</field>
         </record>
 
-        <record id="group_tada_admin_manager" model="res.groups">
-            <field name="name">TADA Admin Manager</field>
-            <field name="implied_ids" eval="[(4, ref('group_tada_admin_user'))]"/>
-            <field name="comment">Manager access to TADA Admin with full CRUD operations</field>
-        </record>
-
+        <!-- 1. ADMIN: Super-user della piattaforma -->
         <record id="group_tada_admin_admin" model="res.groups">
-            <field name="name">TADA Admin Administrator</field>
-            <field name="category_id" ref="base.module_category_administration"/>
-            <field name="implied_ids" eval="[(4, ref('group_tada_admin_manager'))]"/>
-            <field name="comment">Administrator access to TADA Admin with configuration rights</field>
-            <!-- Assegna automaticamente l'utente amministratore al gruppo -->
-            <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+            <field name="name">Admin</field>
+            <field name="category_id" ref="module_category_tada_admin_access"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_system'))]"/>
+            <field name="comment">ADMIN - Full access to everything. Can create, view, edit all dashboards and data across all companies.</field>
         </record>
+
+        <!-- 2. MANAGER: TaDa Provider del servizio -->
+        <record id="group_tada_admin_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="module_category_tada_admin_access"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="comment">MANAGER - Can view Dashboard Admin and all lists. Operational access to all company data. Can create new partners and manage customer data.</field>
+        </record>
+
+        <!-- 3. PARTNER: Partner esterno -->
+        <record id="group_tada_admin_partner" model="res.groups">
+            <field name="name">Partner</field>
+            <field name="category_id" ref="module_category_tada_admin_access"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="comment">PARTNER - Can view Dashboard Partner and own company data only. Can edit customer notes and basic data within own company.</field>
+        </record>
+
     </data>
 </odoo>
